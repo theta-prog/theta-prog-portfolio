@@ -9,7 +9,11 @@ const HobbiesSection = () => {
                     ['BOOK', '📚'],
                     ['CAMP', '⛺️'],
                 ].map(([hobby, emoji]) => (
-                    <div key={hobby} className="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform hover:scale-105">
+                    <a
+                        key={hobby}
+                        href={`hobbies#${hobby.toLowerCase()}`}
+                        className="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden transition-transform hover:scale-105"
+                    >
                         <div className="p-6 space-y-4">
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{hobby}</h3>
                             <div className="aspect-square bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
@@ -19,7 +23,7 @@ const HobbiesSection = () => {
                                 {hobby === 'DRUM' ? 'My journey with drums' : hobby === 'CAMERA' ? 'Photography passion' : hobby === 'BOOK' ? 'My reading list' : 'Outdoor adventures'}
                             </p>
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
         </section>
