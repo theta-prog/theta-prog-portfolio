@@ -10,14 +10,22 @@ const AboutSection = () => {
                         </div>
                     </div>
                     <div className="md:col-span-2 space-y-6">
-                        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Your Name</h3>
+                        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Theta</h3>
                         <p className="text-lg text-gray-700 dark:text-gray-300">
                             I am a passionate developer with expertise in React, Next.js, and modern web technologies. I love creating beautiful and functional user interfaces.
+                        </p>
+                        <p className="text-lg text-gray-700 dark:text-gray-300">
+                          Also, I&apos;m creating songs with Vocaloid and with computer.
+                          Usually, upload it for on youtube or some video site.
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">React</span>
                             <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">Next.js</span>
                             <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full">Tailwind CSS</span>
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                            <span className="px-4 py-2 bg-blue-100 dark:bg-pink-500 text-blue-800 dark:text-blue-100 rounded-full">HatsuneMiku</span>
+                            <span className="px-4 py-2 bg-blue-100 dark:bg-pink-500 text-blue-800 dark:text-blue-100 rounded-full">Studio One</span>
                         </div>
                     </div>
                 </div>

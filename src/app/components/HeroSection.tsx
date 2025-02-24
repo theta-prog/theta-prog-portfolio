@@ -25,10 +25,10 @@ const HeroSection = () => {
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center p-8 bg-black/30 backdrop-blur-sm rounded-lg max-w-2xl">
                     <h2 className="text-4xl md:text-5xl font-semibold mb-4 tracking-tight text-white">
-                        FIRST SIGHT
+                        THETA LIBRARY
                     </h2>
                     <p className="text-xl md:text-2xl text-gray-100">
-                        This is a blank template React App
+                        This is a Portfolio site of Theta
                     </p>
                 </div>
             </div>

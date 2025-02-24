@@ -4,9 +4,9 @@ const WorksSection = () => {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">My Works</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {['MUSIC', 'ART', 'CODING'].map((category, index) => (
-                    <div
+                    <a
                         key={category}
-                        id={category.toLowerCase()}
+                        href={`works/${category.toLowerCase()}`}
                         className={`${
                             index === 0
                                 ? 'bg-purple-100 dark:bg-purple-900/30'
@@ -28,7 +28,7 @@ const WorksSection = () => {
                                 Description of your {category.toLowerCase()} works
                             </p>
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
         </section>
