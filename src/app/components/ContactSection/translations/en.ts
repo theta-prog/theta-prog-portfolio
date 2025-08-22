@@ -1,0 +1,20 @@
+export const en = {
+  title: 'Contact',
+  subtitle: 'Feel free to reach out for project consultations, collaborations, work requests, and more',
+  sendMessage: 'Send a Message',
+  name: 'Name *',
+  namePlaceholder: 'John Doe',
+  email: 'Email Address *',
+  subject: 'Subject *',
+  subjectPlaceholder: 'Subject of your inquiry',
+  message: 'Message *',
+  messagePlaceholder: 'Please write your inquiry...',
+  sendButton: 'Send Message',
+  otherMethods: 'Other Contact Methods',
+  socialMedia: 'Social Media',
+  responseTime: 'Response Time',
+  responseTimeText: 'I typically respond within 24-48 hours. For urgent matters, please include "URGENT" in the subject line.',
+  collaboration: 'Collaborations Welcome',
+  collaborationText: 'If you have ideas for collaborations in music, art, or technology fields, or new project concepts, please don\'t hesitate to reach out.',
+  messageSent: 'Message sent! (Demo version)'
+};

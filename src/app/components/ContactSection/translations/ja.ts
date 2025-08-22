@@ -1,0 +1,20 @@
+export const ja = {
+  title: 'Contact',
+  subtitle: 'プロジェクトの相談、コラボレーション、お仕事のご依頼など、お気軽にお声がけください',
+  sendMessage: 'メッセージを送る',
+  name: 'お名前 *',
+  namePlaceholder: '山田太郎',
+  email: 'メールアドレス *',
+  subject: '件名 *',
+  subjectPlaceholder: 'お問い合わせの件名',
+  message: 'メッセージ *',
+  messagePlaceholder: 'お問い合わせ内容をご記入ください...',
+  sendButton: 'メッセージを送信',
+  otherMethods: 'その他の連絡方法',
+  socialMedia: 'ソーシャルメディア',
+  responseTime: 'レスポンス時間',
+  responseTimeText: '通常、24〜48時間以内にご返信いたします。お急ぎの案件については、件名に「緊急」とご記載ください。',
+  collaboration: 'コラボレーション歓迎',
+  collaborationText: '音楽、アート、テクノロジーの分野でのコラボレーション、新しいプロジェクトのアイデアをお持ちの方、ぜひご連絡ください。',
+  messageSent: 'メッセージを送信しました！（デモ版）'
+};
