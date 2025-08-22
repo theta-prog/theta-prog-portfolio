@@ -1,9 +1,9 @@
 'use client';
 import Header from './components/Header/index';
 import HeroSection from './components/HeroSection';
-import WorkingAboutSection from './components/WorkingAboutSection';
+import AboutSection from './components/AboutSection';
 import WorksSection from './components/WorksSection';
-import WorkingHobbiesSection from './components/WorkingHobbiesSection';
+import HobbiesSection from './components/HobbiesSection';
 
 // Main Component
 const Page = () => {
@@ -15,9 +15,9 @@ const Page = () => {
             <Header data-oid="cxbhji8" />
             <main className="flex-1 max-w-7xl mx-auto px-8 py-12 space-y-16" data-oid="9luk_7-">
                 <HeroSection data-oid="g5tdyha" />
-                <WorkingAboutSection data-oid="8w-w4pj" />
+                <AboutSection data-oid="8w-w4pj" />
                 <WorksSection data-oid="d2zsnco" />
-                <WorkingHobbiesSection data-oid="qkxst0x" />
+                <HobbiesSection data-oid="qkxst0x" />
             </main>
         </div>
     );

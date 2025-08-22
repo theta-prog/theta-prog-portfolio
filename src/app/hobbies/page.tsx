@@ -1,12 +1,12 @@
 import Header from '../components/Header/index';
-import WorkingHobbiesSection from '../components/WorkingHobbiesSection';
+import HobbiesSection from '../components/HobbiesSection';
 
 export default function Page() {
     return (
         <div className="w-full min-h-screen bg-white dark:bg-black transition-colors duration-200">
             <Header />
             <main className="max-w-6xl mx-auto px-8 py-12">
-                <WorkingHobbiesSection />
+                <HobbiesSection />
             </main>
         </div>
     );

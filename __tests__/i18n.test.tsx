@@ -1,9 +1,9 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { LanguageProvider, useLanguage } from '../src/app/contexts/LanguageContext';
-import WorkingAboutSection from '../src/app/components/WorkingAboutSection';
-import WorkingHobbiesSection from '../src/app/components/WorkingHobbiesSection';
-import WorkingContactSection from '../src/app/components/WorkingContactSection';
+import AboutSection from '../src/app/components/AboutSection';
+import HobbiesSection from '../src/app/components/HobbiesSection';
+import ContactSection from '../src/app/components/ContactSection';
 import Header from '../src/app/components/Header/index';
 
 // Test component to access and manipulate language context
@@ -93,8 +93,8 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByTestId('current-language')).toHaveTextContent('ja');
   });
 
-  test('WorkingAboutSection renders in Japanese', () => {
-    renderWithLanguageProvider(<WorkingAboutSection />);
+  test('AboutSection renders in Japanese', () => {
+    renderWithLanguageProvider(<AboutSection />);
     
     // Check for Japanese content
     expect(screen.getByText('About Me')).toBeInTheDocument();
@@ -103,10 +103,10 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('音楽制作')).toBeInTheDocument();
   });
 
-  test('WorkingAboutSection switches to English', () => {
+  test('AboutSection switches to English', () => {
     renderWithLanguageProvider(
       <div>
-        <WorkingAboutSection />
+        <AboutSection />
         <TestLanguageSwitch />
       </div>
     );
@@ -120,8 +120,8 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('Music Production')).toBeInTheDocument();
   });
 
-  test('WorkingHobbiesSection renders in Japanese', () => {
-    renderWithLanguageProvider(<WorkingHobbiesSection />);
+  test('HobbiesSection renders in Japanese', () => {
+    renderWithLanguageProvider(<HobbiesSection />);
     
     // Check for Japanese content
     expect(screen.getByText('Hobby')).toBeInTheDocument();
@@ -130,10 +130,10 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('電子音楽制作')).toBeInTheDocument();
   });
 
-  test('WorkingHobbiesSection switches to English', () => {
+  test('HobbiesSection switches to English', () => {
     renderWithLanguageProvider(
       <div>
-        <WorkingHobbiesSection />
+        <HobbiesSection />
         <TestLanguageSwitch />
       </div>
     );
@@ -147,7 +147,7 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('Electronic Music Production')).toBeInTheDocument();
   });
 
-  test('WorkingHobbiesSection getCategoryColor covers all branches', () => {
+  test('HobbiesSection getCategoryColor covers all branches', () => {
     // Test all category colors including unknown to achieve 100% branch coverage
     const TestAllCategoryColors = () => {
       const getCategoryColor = (category: string) => {
@@ -186,8 +186,8 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByTestId('unknown-color')).toHaveTextContent('default-color');
   });
 
-  test('WorkingContactSection renders in Japanese', () => {
-    renderWithLanguageProvider(<WorkingContactSection />);
+  test('ContactSection renders in Japanese', () => {
+    renderWithLanguageProvider(<ContactSection />);
     
     // Check for Japanese content
     expect(screen.getByText('Contact')).toBeInTheDocument();
@@ -195,10 +195,10 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('お気軽にご連絡ください')).toBeInTheDocument();
   });
 
-  test('WorkingContactSection switches to English', () => {
+  test('ContactSection switches to English', () => {
     renderWithLanguageProvider(
       <div>
-        <WorkingContactSection />
+        <ContactSection />
         <TestLanguageSwitch />
       </div>
     );
@@ -215,9 +215,9 @@ describe('Internationalization (i18n) Tests', () => {
     renderWithLanguageProvider(
       <div>
         <Header />
-        <WorkingAboutSection />
-        <WorkingHobbiesSection />
-        <WorkingContactSection />
+        <AboutSection />
+        <HobbiesSection />
+        <ContactSection />
         <TestLanguageSwitch />
       </div>
     );
@@ -236,7 +236,7 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getAllByText('Get in Touch')).toHaveLength(2); // Contact section (appears in header and content)
   });
 
-  test('WorkingContactSection getIcon function covers all branches', () => {
+  test('ContactSection getIcon function covers all branches', () => {
     // Test all icon types including unknown to achieve 100% branch coverage
     const TestAllIconTypes = () => {
       const getIcon = (iconType: string) => {
@@ -296,7 +296,7 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByTestId('unknown-method-color')).toHaveTextContent('email-color');
   });
 
-  test('WorkingContactSection all branch conditions thoroughly tested', () => {
+  test('ContactSection all branch conditions thoroughly tested', () => {
     // Test every single condition within the color mapping to achieve 100% branch coverage
     const TestComprehensiveBranches = () => {
       const getMethodColor = (type: string) => {
@@ -370,9 +370,9 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByTestId('icon-number-branch')).toHaveTextContent('email-icon-branch');
   });
 
-  test('WorkingContactSection actual component branch coverage test', () => {
-    // Test the actual WorkingContactSection component to achieve proper branch coverage
-    renderWithLanguageProvider(<WorkingContactSection />);
+  test('ContactSection actual component branch coverage test', () => {
+    // Test the actual ContactSection component to achieve proper branch coverage
+    renderWithLanguageProvider(<ContactSection />);
     
     // Verify the component renders correctly
     expect(screen.getByText('Contact')).toBeInTheDocument();
@@ -388,12 +388,12 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('お気軽にご連絡ください')).toBeInTheDocument();
   });
 
-  test('WorkingContactSection and WorkingHobbiesSection default branch coverage', () => {
+  test('ContactSection and HobbiesSection default branch coverage', () => {
     // Test the helper functions with edge cases by creating isolated test components
     // that mirror the exact logic of the original helper functions
 
     const ContactTestComponent = () => {
-      // This is an exact copy of the getIcon function from WorkingContactSection
+      // This is an exact copy of the getIcon function from ContactSection
       const getIcon = (iconType: string) => {
         const icons = {
           email: (
@@ -420,7 +420,7 @@ describe('Internationalization (i18n) Tests', () => {
         return icons[iconType as keyof typeof icons] || icons.email;
       };
 
-      // This is an exact copy of the getMethodColor function from WorkingContactSection
+      // This is an exact copy of the getMethodColor function from ContactSection
       const getMethodColor = (type: string) => {
         const colors = {
           email: 'bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-400',
@@ -455,7 +455,7 @@ describe('Internationalization (i18n) Tests', () => {
     };
 
     const HobbiesTestComponent = () => {
-      // This is an exact copy of the getCategoryColor function from WorkingHobbiesSection
+      // This is an exact copy of the getCategoryColor function from HobbiesSection
       const getCategoryColor = (category: string) => {
         const colors = {
           music: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -524,9 +524,9 @@ describe('Page Integration Tests', () => {
     renderWithLanguageProvider(
       <div>
         <Header />
-        <WorkingAboutSection />
-        <WorkingHobbiesSection />
-        <WorkingContactSection />
+        <AboutSection />
+        <HobbiesSection />
+        <ContactSection />
       </div>
     );
     
@@ -537,7 +537,7 @@ describe('Page Integration Tests', () => {
   test('Language switching preserves component state', () => {
     renderWithLanguageProvider(
       <div>
-        <WorkingAboutSection />
+        <AboutSection />
         <TestLanguageSwitch />
       </div>
     );
