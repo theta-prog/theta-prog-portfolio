@@ -1,46 +1,7 @@
 'use client';
 
 import { useLanguage } from '../contexts/LanguageContext';
-
-// 翻訳データを直接コンポーネント内で定義
-const translations = {
-  ja: {
-    title: 'About Me',
-    subtitle: 'クリエイティブな表現と技術の融合を追求する、多分野にわたるクリエイター',
-    profile: 'プロフィール',
-    background: 'バックグラウンド',
-    backgroundText: '音楽、アート、プログラミングの境界を越えて活動するクリエイター。技術と芸術の融合により、革新的な表現方法を模索し続けています。デジタル技術を活用した新しい創作手法の開発に情熱を注いでいます。',
-    approach: 'アプローチ',
-    approachText: '異なる分野の知識や技術を組み合わせることで、従来にない作品や体験を創造することを目指しています。常に新しい技術や表現手法に興味を持ち、実験的なプロジェクトに取り組んでいます。',
-    skillsTitle: 'スキル・専門分野',
-    musicProduction: '音楽制作',
-    musicProductionDesc: '電子音楽、アンビエント、実験音楽の制作。DAWを使用した楽曲制作とサウンドデザイン。',
-    digitalArt: 'デジタルアート',
-    digitalArtDesc: 'ジェネラティブアート、デジタルペインティング、3Dモデリング、インタラクティブアート。',
-    programming: 'プログラミング',
-    programmingDesc: 'Web開発、クリエイティブコーディング、アルゴリズム作曲、インタラクティブメディア開発。',
-    philosophy: '創作哲学',
-    philosophyQuote: '「技術は表現の手段であり、創造性は技術を超越する。異なる分野の境界を曖昧にし、新しい可能性を探求することで、予想を超えた美しさや感動を生み出すことができる。」'
-  },
-  en: {
-    title: 'About Me',
-    subtitle: 'A multidisciplinary creator pursuing the fusion of creative expression and technology',
-    profile: 'Profile',
-    background: 'Background',
-    backgroundText: 'A creator working across the boundaries of music, art, and programming. Through the fusion of technology and art, I continuously explore innovative expression methods. I am passionate about developing new creative techniques utilizing digital technology.',
-    approach: 'Approach',
-    approachText: 'I aim to create unprecedented works and experiences by combining knowledge and techniques from different fields. I am always interested in new technologies and expression methods, working on experimental projects.',
-    skillsTitle: 'Skills & Expertise',
-    musicProduction: 'Music Production',
-    musicProductionDesc: 'Electronic music, ambient, and experimental music production. Music creation and sound design using DAWs.',
-    digitalArt: 'Digital Art',
-    digitalArtDesc: 'Generative art, digital painting, 3D modeling, and interactive art.',
-    programming: 'Programming',
-    programmingDesc: 'Web development, creative coding, algorithmic composition, and interactive media development.',
-    philosophy: 'Creative Philosophy',
-    philosophyQuote: '"Technology is a means of expression, and creativity transcends technology. By blurring the boundaries between different fields and exploring new possibilities, we can create beauty and emotion that exceed expectations."'
-  }
-};
+import { translations } from './AboutSection/translations';
 
 const AboutSection = () => {
     console.log('🚀 AboutSection: Component rendering...');

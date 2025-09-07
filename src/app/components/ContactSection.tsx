@@ -1,138 +1,7 @@
 'use client';
 
 import { useLanguage } from '../contexts/LanguageContext';
-
-// 翻訳データを直接コンポーネント内で定義
-const translations = {
-  ja: {
-    title: 'Contact',
-    subtitle: '一緒に創造的なプロジェクトを始めませんか？',
-    description: '新しいアイデアや協力の機会について、いつでもお気軽にご連絡ください。音楽制作、アート作品、技術プロジェクトなど、様々な分野での協力を歓迎しています。',
-    getInTouch: 'お気軽にご連絡ください',
-    contactMethods: {
-      email: 'メール',
-      social: 'ソーシャルメディア',
-      collaboration: 'コラボレーション'
-    },
-    methods: [
-      {
-        type: 'email',
-        title: 'Email',
-        value: 'hello@theta-library.com',
-        description: 'プロジェクトのご相談や質問はメールでお気軽にどうぞ。',
-        icon: 'email'
-      },
-      {
-        type: 'social',
-        title: 'GitHub',
-        value: '@theta-library',
-        description: 'コードやオープンソースプロジェクトをご覧いただけます。',
-        icon: 'github'
-      },
-      {
-        type: 'social',
-        title: 'SoundCloud',
-        value: '@theta-sounds',
-        description: '最新の音楽作品やサウンドエクスペリメントをお聞きいただけます。',
-        icon: 'soundcloud'
-      },
-      {
-        type: 'collaboration',
-        title: 'Project Collaboration',
-        value: 'Let\'s create together',
-        description: 'クリエイティブなプロジェクトや技術的な挑戦に興味がある方、一緒に何かを作りませんか？',
-        icon: 'collaboration'
-      }
-    ],
-    interests: {
-      title: '興味のある分野',
-      items: [
-        'インタラクティブメディアアート',
-        'アルゴリズム作曲',
-        'ジェネラティブビジュアル',
-        'IoTとセンサー技術',
-        'VR/AR体験デザイン',
-        'オープンソースプロジェクト'
-      ]
-    },
-    availability: {
-      title: '対応可能なプロジェクト',
-      description: 'フリーランスとして、以下のようなプロジェクトに参加可能です：',
-      types: [
-        'Web開発・アプリケーション開発',
-        '音楽制作・サウンドデザイン',
-        'インタラクティブアート制作',
-        'プロトタイプ開発',
-        '技術コンサルティング',
-        'ワークショップ・教育プログラム'
-      ]
-    }
-  },
-  en: {
-    title: 'Contact',
-    subtitle: 'Let\'s start a creative project together?',
-    description: 'Feel free to reach out about new ideas or collaboration opportunities. I welcome collaboration in various fields including music production, art projects, and technical projects.',
-    getInTouch: 'Get in Touch',
-    contactMethods: {
-      email: 'Email',
-      social: 'Social Media',
-      collaboration: 'Collaboration'
-    },
-    methods: [
-      {
-        type: 'email',
-        title: 'Email',
-        value: 'hello@theta-library.com',
-        description: 'Feel free to email me for project inquiries or questions.',
-        icon: 'email'
-      },
-      {
-        type: 'social',
-        title: 'GitHub',
-        value: '@theta-library',
-        description: 'Check out my code and open source projects.',
-        icon: 'github'
-      },
-      {
-        type: 'social',
-        title: 'SoundCloud',
-        value: '@theta-sounds',
-        description: 'Listen to my latest music works and sound experiments.',
-        icon: 'soundcloud'
-      },
-      {
-        type: 'collaboration',
-        title: 'Project Collaboration',
-        value: 'Let\'s create together',
-        description: 'Interested in creative projects or technical challenges? Let\'s create something together.',
-        icon: 'collaboration'
-      }
-    ],
-    interests: {
-      title: 'Areas of Interest',
-      items: [
-        'Interactive Media Art',
-        'Algorithmic Composition',
-        'Generative Visuals',
-        'IoT & Sensor Technology',
-        'VR/AR Experience Design',
-        'Open Source Projects'
-      ]
-    },
-    availability: {
-      title: 'Available Project Types',
-      description: 'As a freelancer, I can participate in projects such as:',
-      types: [
-        'Web Development & Application Development',
-        'Music Production & Sound Design',
-        'Interactive Art Creation',
-        'Prototype Development',
-        'Technical Consulting',
-        'Workshops & Educational Programs'
-      ]
-    }
-  }
-};
+import { translations } from './ContactSection/translations';
 
 const ContactSection = () => {
     console.log('📧 ContactSection: Component rendering...');
@@ -140,7 +9,7 @@ const ContactSection = () => {
     const { language } = useLanguage();
     console.log('📍 ContactSection: Current language =', language);
     
-    const t = translations[language];
+  const t = translations[language];
     console.log('📝 ContactSection: Translation object =', t);
 
     const getIcon = (iconType: string) => {
