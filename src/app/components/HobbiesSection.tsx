@@ -3,21 +3,23 @@
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './HobbiesSection/translations';
 
+export const getCategoryColor = (category: string) => {
+    const colors = {
+        music: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+        art: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+        tech: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+        others: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+    } as const;
+    return colors[category as keyof typeof colors] || colors.others;
+};
+
 const HobbiesSection = () => {
     
     const { language } = useLanguage();
     
     const t = translations[language];
 
-    const getCategoryColor = (category: string) => {
-        const colors = {
-            music: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-            art: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-            tech: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-            others: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-        };
-        return colors[category as keyof typeof colors] || colors.others;
-    };
+    
 
     const groupedHobbies = t.hobbies.reduce((acc, hobby) => {
         if (!acc[hobby.category]) {
