@@ -4,13 +4,10 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './ContactSection/translations';
 
 const ContactSection = () => {
-    console.log('📧 ContactSection: Component rendering...');
     
     const { language } = useLanguage();
-    console.log('📍 ContactSection: Current language =', language);
     
-  const t = translations[language];
-    console.log('📝 ContactSection: Translation object =', t);
+  const t = translations[language as keyof typeof translations] ?? translations.en;
 
     const getIcon = (iconType: string) => {
         const icons = {

@@ -4,13 +4,10 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './AboutSection/translations';
 
 const AboutSection = () => {
-    console.log('🚀 AboutSection: Component rendering...');
     
     const { language } = useLanguage();
-    console.log('📍 AboutSection: Current language =', language);
     
     const t = translations[language];
-    console.log('📝 AboutSection: Translation object =', t);
 
     return (
         <div className="space-y-12">
@@ -95,16 +92,6 @@ const AboutSection = () => {
                         </p>
                     </div>
                 </div>
-            </section>
-
-            {/* Philosophy Section */}
-            <section className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8">
-                <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6 text-center">
-                    {t.philosophy}
-                </h2>
-                <blockquote className="text-lg text-gray-700 dark:text-gray-300 text-center italic leading-relaxed">
-                    {t.philosophyQuote}
-                </blockquote>
             </section>
         </div>
     );

@@ -4,13 +4,10 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './HobbiesSection/translations';
 
 const HobbiesSection = () => {
-    console.log('🎨 HobbiesSection: Component rendering...');
     
     const { language } = useLanguage();
-    console.log('📍 HobbiesSection: Current language =', language);
     
     const t = translations[language];
-    console.log('📝 HobbiesSection: Translation object =', t);
 
     const getCategoryColor = (category: string) => {
         const colors = {
@@ -75,19 +72,6 @@ const HobbiesSection = () => {
                         </div>
                     </div>
                 ))}
-            </section>
-
-            {/* Philosophy Section */}
-            <section className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 text-center">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-          {language === 'ja' ? '趣味の哲学' : 'Hobby Philosophy'}
-        </h2>
-        <p className="text-lg text-gray-700 dark:text-gray-300 italic">
-          {language === 'ja' 
-            ? '「趣味は創造性の源泉であり、異なる分野の探求が新しいアイデアとインスピレーションを生み出す。技術と芸術の境界を越えた実験こそが、予想を超えた発見をもたらす。」'
-            : '"Hobbies are the source of creativity, and exploring different fields generates new ideas and inspiration. Experiments that transcend the boundaries of technology and art bring discoveries beyond expectations."'
-          }
-        </p>
             </section>
         </div>
     );
