@@ -16,7 +16,4 @@ export const en = {
   digitalArtDesc: 'Generative art, digital painting, 3D modeling, and interactive art.',
   programming: 'Programming',
   programmingDesc: 'Web development, creative coding, algorithmic composition, and interactive media development.',
-  philosophy: 'Creative Philosophy',
-  philosophyQuote:
-    '"Technology is a means of expression, and creativity transcends technology. By blurring the boundaries between different fields and exploring new possibilities, we can create beauty and emotion that exceed expectations."',
 };

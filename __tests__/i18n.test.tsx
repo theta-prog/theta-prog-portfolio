@@ -98,7 +98,7 @@ describe('Internationalization (i18n) Tests', () => {
     
     // Check for Japanese content
     expect(screen.getByText('About Me')).toBeInTheDocument();
-    expect(screen.getByText('クリエイティブな表現と技術の融合を追求する、多分野にわたるクリエイター')).toBeInTheDocument();
+    expect(screen.getByText('thetaとは')).toBeInTheDocument();
     expect(screen.getByText('プロフィール')).toBeInTheDocument();
     expect(screen.getByText('音楽制作')).toBeInTheDocument();
   });

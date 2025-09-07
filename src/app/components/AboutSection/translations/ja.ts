@@ -1,6 +1,6 @@
 export const ja = {
   title: 'About Me',
-  subtitle: 'クリエイティブな表現と技術の融合を追求する、多分野にわたるクリエイター',
+  subtitle: 'thetaとは',
   profile: 'プロフィール',
   background: 'バックグラウンド',
   backgroundText:
@@ -15,7 +15,4 @@ export const ja = {
   digitalArtDesc: 'ジェネラティブアート、デジタルペインティング、3Dモデリング、インタラクティブアート。',
   programming: 'プログラミング',
   programmingDesc: 'Web開発、クリエイティブコーディング、アルゴリズム作曲、インタラクティブメディア開発。',
-  philosophy: '創作哲学',
-  philosophyQuote:
-    '「技術は表現の手段であり、創造性は技術を超越する。異なる分野の境界を曖昧にし、新しい可能性を探求することで、予想を超えた美しさや感動を生み出すことができる。」',
 };
