@@ -7,7 +7,7 @@ const ContactSection = () => {
     
     const { language } = useLanguage();
     
-  const t = translations[language as keyof typeof translations] ?? translations.en;
+  const t = translations[language];
 
     const getIcon = (iconType: string) => {
         const icons = {
