@@ -3,7 +3,6 @@ import Header from './components/Header/index';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import WorksSection from './components/WorksSection';
-import HobbiesSection from './components/HobbiesSection';
 
 // Main Component
 const Page = () => {
@@ -17,7 +16,6 @@ const Page = () => {
                 <HeroSection data-oid="g5tdyha" />
                 <AboutSection data-oid="8w-w4pj" />
                 <WorksSection data-oid="d2zsnco" />
-                <HobbiesSection data-oid="qkxst0x" />
             </main>
         </div>
     );

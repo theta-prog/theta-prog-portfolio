@@ -81,13 +81,6 @@ const Header = () => {
                             </div>
                         </div>
                         <Link
-                            href="/hobbies"
-                            className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                            data-oid="hgrx3f5"
-                        >
-                            {t.hobbies}
-                        </Link>
-                        <Link
                             href="/contact"
                             className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
                             data-oid="-0:.696"
