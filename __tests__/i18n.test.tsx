@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { LanguageProvider, useLanguage } from '../src/app/contexts/LanguageContext';
 import AboutSection from '../src/app/components/AboutSection';
-import HobbiesSection from '../src/app/components/HobbiesSection';
 import ContactSection from '../src/app/components/ContactSection';
 import Header from '../src/app/components/Header/index';
 
@@ -120,72 +119,6 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('Music Production')).toBeInTheDocument();
   });
 
-  test('HobbiesSection renders in Japanese', () => {
-    renderWithLanguageProvider(<HobbiesSection />);
-    
-    // Check for Japanese content
-    expect(screen.getByText('Hobby')).toBeInTheDocument();
-    expect(screen.getByText('創造性と技術探求の源泉となる多様な趣味の世界')).toBeInTheDocument();
-    expect(screen.getByText('音楽制作')).toBeInTheDocument();
-    expect(screen.getByText('電子音楽制作')).toBeInTheDocument();
-  });
-
-  test('HobbiesSection switches to English', () => {
-    renderWithLanguageProvider(
-      <div>
-        <HobbiesSection />
-        <TestLanguageSwitch />
-      </div>
-    );
-    
-    // Switch to English
-    fireEvent.click(screen.getByTestId('switch-to-en'));
-    
-    // Check for English content
-    expect(screen.getByText('A diverse world of hobbies that serve as sources of creativity and technological exploration')).toBeInTheDocument();
-    expect(screen.getByText('Music Production')).toBeInTheDocument();
-    expect(screen.getByText('Electronic Music Production')).toBeInTheDocument();
-  });
-
-  test('HobbiesSection getCategoryColor covers all branches', () => {
-    // Test all category colors including unknown to achieve 100% branch coverage
-    const TestAllCategoryColors = () => {
-      const getCategoryColor = (category: string) => {
-        const colors = {
-          reading: 'reading-color',
-          gaming: 'gaming-color',
-          learning: 'learning-color',
-          'ai-tools': 'ai-tools-color',
-          'creative-writing': 'creative-writing-color'
-        };
-        return colors[category as keyof typeof colors] || 'default-color';
-      };
-      
-      return (
-        <div>
-          <span data-testid="reading-color">{getCategoryColor('reading')}</span>
-          <span data-testid="gaming-color">{getCategoryColor('gaming')}</span>
-          <span data-testid="learning-color">{getCategoryColor('learning')}</span>
-          <span data-testid="ai-tools-color">{getCategoryColor('ai-tools')}</span>
-          <span data-testid="creative-writing-color">{getCategoryColor('creative-writing')}</span>
-          <span data-testid="unknown-color">{getCategoryColor('unknown-category')}</span>
-        </div>
-      );
-    };
-
-    renderWithLanguageProvider(<TestAllCategoryColors />);
-    
-    // All known category colors should be correct
-    expect(screen.getByTestId('reading-color')).toHaveTextContent('reading-color');
-    expect(screen.getByTestId('gaming-color')).toHaveTextContent('gaming-color');
-    expect(screen.getByTestId('learning-color')).toHaveTextContent('learning-color');
-    expect(screen.getByTestId('ai-tools-color')).toHaveTextContent('ai-tools-color');
-    expect(screen.getByTestId('creative-writing-color')).toHaveTextContent('creative-writing-color');
-    
-    // Unknown category should return default color
-    expect(screen.getByTestId('unknown-color')).toHaveTextContent('default-color');
-  });
-
   test('ContactSection renders in Japanese', () => {
     renderWithLanguageProvider(<ContactSection />);
     
@@ -216,7 +149,6 @@ describe('Internationalization (i18n) Tests', () => {
       <div>
         <Header />
         <AboutSection />
-        <HobbiesSection />
         <ContactSection />
         <TestLanguageSwitch />
       </div>
@@ -225,14 +157,12 @@ describe('Internationalization (i18n) Tests', () => {
     // Default should be Japanese
     expect(screen.getByTestId('current-language')).toHaveTextContent('ja');
     expect(screen.getByText('プロフィール')).toBeInTheDocument(); // About section
-    expect(screen.getByText('創造性と技術探求の源泉となる多様な趣味の世界')).toBeInTheDocument(); // Hobbies section
     expect(screen.getByText('お気軽にご連絡ください')).toBeInTheDocument(); // Contact section
     
     // Switch to English
     fireEvent.click(screen.getByTestId('switch-to-en'));
     expect(screen.getByTestId('current-language')).toHaveTextContent('en');
     expect(screen.getByText('Profile')).toBeInTheDocument(); // About section
-    expect(screen.getByText('A diverse world of hobbies that serve as sources of creativity and technological exploration')).toBeInTheDocument(); // Hobbies section
     expect(screen.getAllByText('Get in Touch')).toHaveLength(2); // Contact section (appears in header and content)
   });
 
@@ -388,7 +318,7 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByText('お気軽にご連絡ください')).toBeInTheDocument();
   });
 
-  test('ContactSection and HobbiesSection default branch coverage', () => {
+  test('ContactSection default branch coverage', () => {
     // Test the helper functions with edge cases by creating isolated test components
     // that mirror the exact logic of the original helper functions
 
@@ -454,38 +384,10 @@ describe('Internationalization (i18n) Tests', () => {
       );
     };
 
-    const HobbiesTestComponent = () => {
-      // This is an exact copy of the getCategoryColor function from HobbiesSection
-      const getCategoryColor = (category: string) => {
-        const colors = {
-          music: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
-          art: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-          tech: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-          others: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-        };
-        return colors[category as keyof typeof colors] || colors.others;
-      };
-
-      return (
-        <div>
-          {/* Test all known categories first */}
-          <div data-testid="music-color" className={getCategoryColor('music')}>Music</div>
-          <div data-testid="art-color" className={getCategoryColor('art')}>Art</div>
-          <div data-testid="tech-color" className={getCategoryColor('tech')}>Tech</div>
-          <div data-testid="others-color" className={getCategoryColor('others')}>Others</div>
-          
-          {/* Test unknown categories to trigger default branch */}
-          <div data-testid="unknown-hobby-color" className={getCategoryColor('unknown')}>Unknown</div>
-          <div data-testid="empty-hobby-color" className={getCategoryColor('')}>Empty</div>
-        </div>
-      );
-    };
-
-    // Render both test components
+    // Render test component
     render(
       <div>
         <ContactTestComponent />
-        <HobbiesTestComponent />
       </div>
     );
 
@@ -505,14 +407,6 @@ describe('Internationalization (i18n) Tests', () => {
     expect(screen.getByTestId('collaboration-color')).toHaveClass('bg-green-100');
     expect(screen.getByTestId('unknown-color')).toHaveClass('bg-blue-100'); // Should use email color
     expect(screen.getByTestId('empty-color')).toHaveClass('bg-blue-100'); // Should use email color
-    
-    // Verify hobby category colors
-    expect(screen.getByTestId('music-color')).toHaveClass('bg-blue-100');
-    expect(screen.getByTestId('art-color')).toHaveClass('bg-purple-100');
-    expect(screen.getByTestId('tech-color')).toHaveClass('bg-green-100');
-    expect(screen.getByTestId('others-color')).toHaveClass('bg-yellow-100');
-    expect(screen.getByTestId('unknown-hobby-color')).toHaveClass('bg-yellow-100'); // Should use others color
-    expect(screen.getByTestId('empty-hobby-color')).toHaveClass('bg-yellow-100'); // Should use others color
   });
 });
 
@@ -525,7 +419,6 @@ describe('Page Integration Tests', () => {
       <div>
         <Header />
         <AboutSection />
-        <HobbiesSection />
         <ContactSection />
       </div>
     );
