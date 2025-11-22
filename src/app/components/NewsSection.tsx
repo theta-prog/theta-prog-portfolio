@@ -7,10 +7,7 @@ const NewsSection = () => {
     const { language } = useLanguage();
     const t = translations[language];
 
-    const newsItems = [
-        { date: '2024.05.20', content: 'Portfolio Renewal' },
-    ];
-
+    const newsItems = t.newsItems;
     return (
         <section className="w-full">
             <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">{t.title}</h2>
