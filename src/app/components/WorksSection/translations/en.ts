@@ -8,5 +8,5 @@ export const en = {
     songDescription: 'Short description of the song.',
     appScreenshot: 'App Screenshot',
     project: 'Project',
-    techStack: 'Tech stack: React, Next.js, TypeScript',
+    techStackLabel: 'Tech stack',
 };

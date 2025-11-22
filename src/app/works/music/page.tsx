@@ -30,7 +30,7 @@ export default function Page() {
                                 <div className="w-full md:w-64 aspect-video bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 relative overflow-hidden group">
                                     <button
                                         type="button"
-                                        className="group-hover:scale-110 transition-transform duration-300 bg-transparent border-none text-gray-500 dark:text-gray-400 cursor-pointer"
+                                        className="group-hover:scale-110 transition-transform duration-300 bg-transparent border-0 text-gray-500 dark:text-gray-400"
                                         aria-label={`Play ${song.title}`}
                                     >
                                         ▶ {t.play}

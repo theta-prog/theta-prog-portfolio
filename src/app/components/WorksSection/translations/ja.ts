@@ -8,5 +8,5 @@ export const ja = {
     songDescription: '楽曲の簡単な説明。',
     appScreenshot: 'アプリのスクリーンショット',
     project: 'プロジェクト',
-    techStack: '技術スタック: React, Next.js, TypeScript',
+    techStackLabel: '技術スタック',
 };

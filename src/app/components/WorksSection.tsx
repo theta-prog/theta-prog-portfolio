@@ -57,7 +57,7 @@ const WorksSection = () => {
                             </div>
                             <div className="p-4">
                                 <h4 className="font-bold text-gray-900 dark:text-white mb-2">{t.project} {item}</h4>
-                                <p className="text-sm text-gray-600 dark:text-gray-300">{t.techStack}</p>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">{t.techStackLabel}: React, Next.js, TypeScript</p>
                             </div>
                         </div>
                     ))}
