@@ -4,5 +4,5 @@ export const en = {
   profile: 'Profile',
   background: 'Background',
   backgroundText:
-    'A creator working across the boundaries of music, art, and programming. Through the fusion of technology and art, I continuously explore innovative expression methods. I am passionate about developing new creative techniques utilizing digital technology.',
+    "I'm a creator who produces Vocaloid/DTM music and works as a frontend engineer. I love exploring new ways to express myself by combining technology and art, and I'm always looking for innovative approaches to creativity.",
 };
