@@ -2,6 +2,7 @@ export const en = {
     title: 'Coding',
     subtitle: 'App / Service',
     techStack: 'Tech Stack',
+    techStackItems: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Processing', 'Python', 'Jenkins'],
     projectsTitle: 'Projects',
     viewDetails: 'View Details',
     projects: [

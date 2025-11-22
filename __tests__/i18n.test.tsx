@@ -238,14 +238,14 @@ describe('HeroSection Component Tests', () => {
 
 describe('WorksSection Component Tests', () => {
   test('WorksSection renders correctly', () => {
-    render(<WorksSection />);
-    expect(screen.getByText('My Works')).toBeInTheDocument();
+    renderWithLanguageProvider(<WorksSection />);
+    expect(screen.getByText('作品集')).toBeInTheDocument(); // Japanese default
     expect(screen.getByText('Music')).toBeInTheDocument();
     expect(screen.getByText('Coding')).toBeInTheDocument();
     
     // Check for dummy content
-    expect(screen.getByText('Original Song 1')).toBeInTheDocument();
-    expect(screen.getByText('Project 1')).toBeInTheDocument();
+    expect(screen.getByText('オリジナル楽曲 1')).toBeInTheDocument();
+    expect(screen.getByText('プロジェクト 1')).toBeInTheDocument();
   });
 });
 

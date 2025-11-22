@@ -7,8 +7,6 @@ export default function Page() {
     const { language } = useLanguage();
     const t = translations[language];
 
-    const techStack = ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Processing', 'Python', 'Jenkins'];
-
     return (
         <div className="w-full min-h-screen bg-background text-foreground transition-colors duration-200">
             <Header />
@@ -29,7 +27,7 @@ export default function Page() {
                         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t.techStack}</h2>
                         <div className="bg-white dark:bg-[#2a2f3a] rounded-xl p-8 shadow-lg border border-gray-100 dark:border-gray-800">
                             <div className="flex flex-wrap gap-3">
-                                {techStack.map((tech, index) => (
+                                {t.techStackItems.map((tech, index) => (
                                     <span 
                                         key={index}
                                         className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg font-medium"
