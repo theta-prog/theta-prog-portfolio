@@ -6,7 +6,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Theta Library',
+    title: 'theta Library',
     description: 'Portfolio of creative works and projects',
 };
 

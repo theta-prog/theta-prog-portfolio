@@ -1,8 +1,9 @@
 export const en = {
   about: 'About',
   works: 'Works',
+  music: 'Music',
+  coding: 'Coding',
   hobbies: 'Hobby',
-  contact: 'Contact',
   getInTouch: 'Get in Touch',
   musicProjects: 'Music Projects',
   artGallery: 'Art Gallery',
