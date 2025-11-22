@@ -2,6 +2,7 @@ export const ja = {
     title: 'Coding',
     subtitle: 'アプリ / サービス',
     techStack: '技術スタック',
+    techStackItems: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Processing', 'Python', 'Jenkins'],
     projectsTitle: 'プロジェクト',
     viewDetails: '詳細を見る',
     projects: [
