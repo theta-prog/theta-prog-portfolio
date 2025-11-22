@@ -2,6 +2,8 @@
 
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './AboutSection/translations';
+import { FaYoutube, FaTiktok, FaGithub, FaMusic } from 'react-icons/fa';
+import { SiNiconico } from 'react-icons/si';
 
 const AboutSection = () => {
     
@@ -9,91 +11,56 @@ const AboutSection = () => {
     
     const t = translations[language];
 
+    const snsLinks = [
+        { name: 'YouTube', url: 'https://youtube.com', icon: FaYoutube },
+        { name: 'Niconico', url: 'https://www.nicovideo.jp', icon: SiNiconico },
+        { name: 'TikTok', url: 'https://www.tiktok.com', icon: FaTiktok },
+        { name: 'Piapro', url: 'https://piapro.jp', icon: FaMusic },
+        { name: 'GitHub', url: 'https://github.com', icon: FaGithub },
+    ];
+
     return (
-        <div className="space-y-12">
-            {/* Hero Section */}
-            <section className="text-center space-y-6">
-                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white">
-                    {t.title}
-                </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    {t.subtitle}
-                </p>
-            </section>
+        <section id="about" className="space-y-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                {t.title}
+            </h2>
 
-            {/* Bio Section */}
-            <section className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 space-y-6">
-                <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-                    {t.profile}
-                </h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
-                            {t.background}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            {t.backgroundText}
-                        </p>
+            <div className="bg-white dark:bg-[#2a2f3a] rounded-xl p-4 md:p-8 shadow-lg border border-gray-100 dark:border-gray-800">
+                <div className="flex flex-col md:flex-row gap-8 items-start">
+                    {/* Profile Image Placeholder */}
+                    <div className="w-32 h-32 md:w-48 md:h-48 bg-gray-200 dark:bg-gray-700 rounded-full flex-shrink-0 flex items-center justify-center text-gray-500 dark:text-gray-400 overflow-hidden mx-auto md:mx-0">
+                        <span className="text-sm">Profile Image</span>
                     </div>
-                    <div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-4">
-                            {t.approach}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                            {t.approachText}
-                        </p>
+
+                    <div className="space-y-6 flex-1">
+                        <div className="space-y-4">
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                                {t.subtitle}
+                            </h3>
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">
+                                {t.backgroundText}
+                            </p>
+                        </div>
+
+                        {/* SNS Links */}
+                        <div className="flex flex-wrap gap-4">
+                            {snsLinks.map((sns) => (
+                                <a
+                                    key={sns.name}
+                                    href={sns.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-blue-500 hover:text-white dark:hover:bg-blue-500 transition-colors text-sm font-medium"
+                                >
+                                    <sns.icon className="text-lg" />
+                                    <span>{sns.name}</span>
+                                </a>
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            {/* Skills Section */}
-            <section className="space-y-8">
-                <h2 className="text-3xl font-semibold text-gray-900 dark:text-white text-center">
-                    {t.skillsTitle}
-                </h2>
-                <div className="grid md:grid-cols-3 gap-8">
-                    <div className="text-center space-y-4">
-                        <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto">
-                            <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l6-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm10-9c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
-                            </svg>
-                        </div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                            {t.musicProduction}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300">
-                            {t.musicProductionDesc}
-                        </p>
-                    </div>
-                    <div className="text-center space-y-4">
-                        <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto">
-                            <svg className="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-                            </svg>
-                        </div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                            {t.digitalArt}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300">
-                            {t.digitalArtDesc}
-                        </p>
-                    </div>
-                    <div className="text-center space-y-4">
-                        <div className="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto">
-                            <svg className="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                        </div>
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                            {t.programming}
-                        </h3>
-                        <p className="text-gray-600 dark:text-gray-300">
-                            {t.programmingDesc}
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </section>
     );
 };
 

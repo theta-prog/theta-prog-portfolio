@@ -1,35 +1,62 @@
+'use client';
+import React from 'react';
+import Link from 'next/link';
+
 const WorksSection = () => {
     return (
-        <section id="works" className="space-y-8">
+        <section id="works" className="space-y-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">My Works</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {['MUSIC', 'ART', 'CODING'].map((category, index) => (
-                    <a
-                        key={category}
-                        href={`works/${category.toLowerCase()}`}
-                        className={`${
-                            index === 0
-                                ? 'bg-purple-100 dark:bg-purple-900/30'
-                                : index === 1
-                                  ? 'bg-rose-100 dark:bg-rose-900/30'
-                                  : 'bg-blue-100 dark:bg-blue-900/30'
-                        } rounded-2xl overflow-hidden transition-transform hover:scale-105`}
-                    >
-                        <div className="p-6 space-y-4">
-                            <h3 className={`text-2xl font-bold ${index === 0 ? 'text-purple-900 dark:text-purple-100' : index === 1 ? 'text-rose-900 dark:text-rose-100' : 'text-blue-900 dark:text-blue-100'}`}>
-                                {category}
-                            </h3>
-                            <div className={`aspect-video ${index === 0 ? 'bg-purple-200 dark:bg-purple-800' : index === 1 ? 'bg-rose-200 dark:bg-rose-800' : 'bg-blue-200 dark:bg-blue-800'} rounded-lg flex items-center justify-center`}>
-                                <span className={`${index === 0 ? 'text-purple-600 dark:text-purple-200' : index === 1 ? 'text-rose-600 dark:text-rose-200' : 'text-blue-600 dark:text-blue-200'}`}>
-                                    {category} Project Preview
-                                </span>
+            
+            {/* Music Section */}
+            <div className="space-y-6">
+                <div className="flex justify-between items-end">
+                    <h3 className="text-2xl font-bold text-purple-600 dark:text-purple-400">Music</h3>
+                    <Link href="/works/music" className="text-sm text-gray-500 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors">
+                        View All →
+                    </Link>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Dummy YouTube Embeds */}
+                    {[1, 2].map((item) => (
+                        <div key={item} className="bg-white dark:bg-[#2a2f3a] rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 transition-transform hover:scale-[1.02]">
+                            <div className="aspect-video bg-gray-200 dark:bg-gray-800 relative">
+                                <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
+                                    YouTube Preview {item}
+                                </div>
                             </div>
-                            <p className={`${index === 0 ? 'text-purple-800 dark:text-purple-200' : index === 1 ? 'text-rose-800 dark:text-rose-200' : 'text-blue-800 dark:text-blue-200'}`}>
-                                Description of your {category.toLowerCase()} works
-                            </p>
+                            <div className="p-4">
+                                <h4 className="font-bold text-gray-900 dark:text-white mb-2">Original Song {item}</h4>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Short description of the song.</p>
+                            </div>
                         </div>
-                    </a>
-                ))}
+                    ))}
+                </div>
+            </div>
+
+            {/* Coding Section */}
+            <div className="space-y-6">
+                <div className="flex justify-between items-end">
+                    <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">Coding</h3>
+                    <Link href="/works/coding" className="text-sm text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                        View All →
+                    </Link>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Dummy App Previews */}
+                    {[1, 2].map((item) => (
+                        <div key={item} className="bg-white dark:bg-[#2a2f3a] rounded-xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800 transition-transform hover:scale-[1.02]">
+                            <div className="aspect-video bg-gray-200 dark:bg-gray-800 relative">
+                                <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
+                                    App Screenshot {item}
+                                </div>
+                            </div>
+                            <div className="p-4">
+                                <h4 className="font-bold text-gray-900 dark:text-white mb-2">Project {item}</h4>
+                                <p className="text-sm text-gray-600 dark:text-gray-300">Tech stack: React, Next.js, TypeScript</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

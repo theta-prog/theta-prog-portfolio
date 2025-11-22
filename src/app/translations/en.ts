@@ -4,7 +4,6 @@ export const en = {
     about: 'About',
     works: 'Works',
     hobbies: 'Hobby',
-    contact: 'Contact',
     getInTouch: 'Get in Touch',
     musicProjects: 'Music Projects',
     artGallery: 'Art Gallery',
@@ -36,28 +35,6 @@ export const en = {
     programmingDesc: 'Web development, creative coding, algorithmic composition, and interactive media development.',
     philosophy: 'Creative Philosophy',
     philosophyQuote: '"Technology is a means of expression, and creativity transcends technology. By blurring the boundaries between different fields and exploring new possibilities, we can create beauty and emotion that exceed expectations."'
-  },
-
-  // Contact Page
-  contact: {
-    title: 'Contact',
-    subtitle: 'Feel free to reach out for project consultations, collaborations, work requests, and more',
-    sendMessage: 'Send a Message',
-    name: 'Name *',
-    namePlaceholder: 'John Doe',
-    email: 'Email Address *',
-    subject: 'Subject *',
-    subjectPlaceholder: 'Subject of your inquiry',
-    message: 'Message *',
-    messagePlaceholder: 'Please write your inquiry...',
-    sendButton: 'Send Message',
-    otherMethods: 'Other Contact Methods',
-    socialMedia: 'Social Media',
-    responseTime: 'Response Time',
-    responseTimeText: 'I typically respond within 24-48 hours. For urgent matters, please include "URGENT" in the subject line.',
-    collaboration: 'Collaborations Welcome',
-    collaborationText: 'If you have ideas for collaborations in music, art, or technology fields, or new project concepts, please don\'t hesitate to reach out.',
-    messageSent: 'Message sent! (Demo version)'
   },
 
   // Hobbies Page
