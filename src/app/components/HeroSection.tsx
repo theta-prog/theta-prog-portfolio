@@ -25,7 +25,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center p-4 md:p-8 bg-black/30 backdrop-blur-sm rounded-lg max-w-2xl mx-4">
                     <h2 className="text-3xl md:text-5xl font-semibold mb-2 md:mb-4 tracking-tight text-white">
-                        THETA LIBRARY
+                        theta library
                     </h2>
                     <p className="text-lg md:text-2xl text-gray-100">
                         This is a Portfolio site of Theta

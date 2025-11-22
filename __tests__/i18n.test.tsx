@@ -64,7 +64,7 @@ describe('Internationalization (i18n) Tests', () => {
         <TestLanguageSwitch />
       </div>
     );
-    expect(screen.getByText('Theta Library')).toBeInTheDocument();
+    expect(screen.getByText('theta library')).toBeInTheDocument();
     const jaButton = screen.getByRole('button', { name: '日本語' });
     const enButton = screen.getByRole('button', { name: 'English' });
     expect(jaButton).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('Internationalization (i18n) Tests', () => {
     );
     fireEvent.click(screen.getByTestId('switch-to-en'));
     expect(screen.getByText('About Me')).toBeInTheDocument();
-    expect(screen.getByText("A multidisciplinary creator pursuing the fusion of creative expression and technology")).toBeInTheDocument();
+    expect(screen.getByText("I'm theta")).toBeInTheDocument();
     // Check that Japanese text is NOT present
     expect(screen.queryByText(/ボカロ、DTMを中心に音楽制作活動を行う/)).not.toBeInTheDocument();
   });
