@@ -48,7 +48,13 @@ export default function Page() {
                             <div key={index} className="bg-white dark:bg-[#2a2f3a] rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-6 items-center transition-transform hover:scale-[1.01]">
                                 {/* Placeholder for screenshot */}
                                 <div className="w-full md:w-64 aspect-video bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 relative overflow-hidden group">
-                                    <span className="group-hover:scale-110 transition-transform duration-300">{t.viewDetails}</span>
+                                    <button
+                                        type="button"
+                                        className="group-hover:scale-110 transition-transform duration-300 bg-transparent border-none text-gray-500 dark:text-gray-400 cursor-pointer"
+                                        aria-label={`View details of ${project.title}`}
+                                    >
+                                        {t.viewDetails}
+                                    </button>
                                 </div>
                                 <div className="flex-1 space-y-3 text-center md:text-left">
                                     <div>
