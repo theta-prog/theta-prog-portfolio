@@ -8,14 +8,17 @@ import { headerTranslations } from './translations';
 import { FaYoutube, FaTiktok, FaGithub, FaMusic, FaShareAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { SiNiconico } from 'react-icons/si';
 
-const Header = () => {
+interface HeaderProps {
+    logoImage?: string | null;
+}
+
+const Header = ({ logoImage = null }: HeaderProps) => {
     const { language, setLanguage } = useLanguage();
     const t = headerTranslations[language];
     const [isSnsOpen, setIsSnsOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // Placeholder for logo image path. Set this to a string path (e.g., '/images/logo.png') to use an image.
-    const logoImage: string | null = null;
+
 
     const snsLinks = [
         { name: 'YouTube', url: 'https://youtube.com', icon: FaYoutube },
