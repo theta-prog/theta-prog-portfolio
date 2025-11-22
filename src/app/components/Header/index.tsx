@@ -5,8 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { headerTranslations } from './translations';
-import { FaYoutube, FaTiktok, FaGithub, FaMusic, FaShareAlt, FaBars, FaTimes } from 'react-icons/fa';
-import { SiNiconico } from 'react-icons/si';
+import { FaShareAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { snsLinks } from '../../constants/socialLinks';
 
 const Header = () => {
     const { language, setLanguage } = useLanguage();
@@ -16,14 +16,6 @@ const Header = () => {
 
     // Placeholder for logo image path. Set this to a string path (e.g., '/images/logo.png') to use an image.
     const logoImage: string | null = null;
-
-    const snsLinks = [
-        { name: 'YouTube', url: 'https://youtube.com', icon: FaYoutube },
-        { name: 'Niconico', url: 'https://www.nicovideo.jp', icon: SiNiconico },
-        { name: 'TikTok', url: 'https://www.tiktok.com', icon: FaTiktok },
-        { name: 'Piapro', url: 'https://piapro.jp', icon: FaMusic },
-        { name: 'GitHub', url: 'https://github.com', icon: FaGithub },
-    ];
 
     return (
         <header
