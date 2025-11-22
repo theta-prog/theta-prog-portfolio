@@ -2,22 +2,13 @@
 
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './AboutSection/translations';
-import { FaYoutube, FaTiktok, FaGithub, FaMusic } from 'react-icons/fa';
-import { SiNiconico } from 'react-icons/si';
+import { snsLinks } from '../constants/socialLinks';
 
 const AboutSection = () => {
     
     const { language } = useLanguage();
     
     const t = translations[language];
-
-    const snsLinks = [
-        { name: 'YouTube', url: 'https://youtube.com', icon: FaYoutube },
-        { name: 'Niconico', url: 'https://www.nicovideo.jp', icon: SiNiconico },
-        { name: 'TikTok', url: 'https://www.tiktok.com', icon: FaTiktok },
-        { name: 'Piapro', url: 'https://piapro.jp', icon: FaMusic },
-        { name: 'GitHub', url: 'https://github.com', icon: FaGithub },
-    ];
 
     return (
         <section id="about" className="space-y-8">
