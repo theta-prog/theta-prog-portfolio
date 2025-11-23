@@ -10,16 +10,16 @@
 
 A modern, responsive portfolio website built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [TailwindCSS](https://tailwindcss.com/). Features comprehensive internationalization support and automated CI/CD pipeline.
 
-## ✨ Features
+## Features
 
-- 🌍 **Internationalization**: Japanese/English language support
-- 🎨 **Modern Design**: Clean, responsive design with dark mode support
-- 🚀 **Performance**: Optimized for speed and SEO
-- 🧪 **Testing**: Comprehensive test coverage with Jest and React Testing Library
-- 🔄 **CI/CD**: Automated testing, building, and deployment
-- 📱 **Mobile-First**: Responsive design for all devices
+- **Internationalization**: Japanese/English language support
+- **Modern Design**: Clean, responsive design with dark mode support
+- **Performance**: Optimized for speed and SEO
+- **Testing**: Comprehensive test coverage with Jest and React Testing Library
+- **CI/CD**: Automated testing, building, and deployment
+- **Mobile-First**: Responsive design for all devices
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 
@@ -74,7 +74,7 @@ npm run test:watch
 npm run test:coverage
 ```
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server with Turbopack
 - `npm run build` - Build the application for production
@@ -87,7 +87,7 @@ npm run test:coverage
 - `npm run test:coverage` - Run tests with coverage report
 - `npm run type-check` - Run TypeScript type checking
 
-## 🚀 Deployment
+## Deployment
 
 This project uses automated deployment through GitHub Actions:
 
@@ -114,7 +114,7 @@ npm run build
 #### GitHub Pages
 Enable GitHub Pages in repository settings and push to main branch.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 src/
@@ -137,7 +137,7 @@ src/
 └── public/                # Static assets
 ```
 
-## 🌍 Internationalization
+## Internationalization
 
 The project supports multiple languages through a custom React context:
 
@@ -150,7 +150,7 @@ To add a new language:
 2. Add the language to the `LanguageContext`
 3. Update component translations
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -158,11 +158,7 @@ To add a new language:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [Next.js](https://nextjs.org/)
 - Styled with [TailwindCSS](https://tailwindcss.com/)
@@ -171,4 +167,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Theta Programming](https://github.com/theta-prog)
