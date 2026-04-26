@@ -1,38 +1,41 @@
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import { useTheme } from '../contexts/ThemeContext';
+import { Background, Heading, Text } from '@stella-ds/react';
 
 const HeroSection = () => {
-    const backgrounds = ['bg-blue-500', 'bg-purple-500', 'bg-green-500', 'bg-red-500'];
-    const [currentBg, setCurrentBg] = useState(0);
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentBg((prev) => (prev + 1) % backgrounds.length);
-        }, 3000);
-
-        return () => clearInterval(timer);
-    }, [backgrounds.length]);
+    const { theme } = useTheme();
 
     return (
-        <section className="h-[300px] md:h-[500px] relative rounded-2xl overflow-hidden">
-            {backgrounds.map((bg, index) => (
-                <div
-                    key={bg}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                        index === currentBg ? 'opacity-100' : 'opacity-0'
-                    } ${bg}`}
-                />
-            ))}
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-4 md:p-8 bg-black/30 backdrop-blur-sm rounded-lg max-w-2xl mx-4">
-                    <h2 className="text-3xl md:text-5xl font-semibold mb-2 md:mb-4 tracking-tight text-white">
+        <Background
+            variant={theme === 'dark' ? 'galaxy' : 'milkyway'}
+            color="cosmos"
+            theme={theme}
+            style={{ borderRadius: '1rem', minHeight: '300px' }}
+            className="md:min-h-[500px]"
+        >
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '300px',
+                padding: '2rem',
+            }} className="md:min-h-[500px]">
+                <div style={{ textAlign: 'center', maxWidth: '40rem' }}>
+                    <Heading
+                        level={1}
+                        size="3xl"
+                        color="starlight-primary"
+                        style={{ marginBottom: '0.75rem', letterSpacing: '-0.03em' }}
+                    >
                         theta library
-                    </h2>
-                    <p className="text-lg md:text-2xl text-gray-100">
-                        This is a Portfolio site of Theta
-                    </p>
+                    </Heading>
+                    <Text size="lg" color="starlight-secondary">
+                        Music &amp; Code — a creative portfolio
+                    </Text>
                 </div>
             </div>
-        </section>
+        </Background>
     );
 };
 

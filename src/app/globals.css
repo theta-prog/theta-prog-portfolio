@@ -2,20 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --background: #ffffff;
-    --foreground: #1d2129;
+/* ── Dark mode (default) ─────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+    --background: var(--stella-color-void-base, #0f1117);
+    --foreground: var(--stella-color-starlight-primary, #e8eaf6);
+    --surface: var(--stella-color-void-surface, #15161b);
+    --border: var(--stella-color-void-muted, #2b2e35);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #1d2129;
-        --foreground: #ffffff;
-    }
+/* ── Light mode overrides ────────────────────────────────────── */
+/* Use html[data-theme="light"] to override the default package token values. */
+html[data-theme="light"] {
+    --background: #f4f4fb;
+    --foreground: #1a1b2e;
+    --surface: #ffffff;
+    --border: #dde0ea;
+
+    /* Remap stella-ui component tokens */
+    --stella-color-void-base:    #f4f4fb;
+    --stella-color-void-surface: #ffffff;
+    --stella-color-void-overlay: #ebebf5;
+    --stella-color-void-muted:   #dde0ea;
+    --stella-color-void-surface-translucent: rgba(255, 255, 255, 0.9);
+
+    --stella-color-starlight-primary:   #1a1b2e;
+    --stella-color-starlight-secondary: #4a5068;
+    --stella-color-starlight-disabled:  #9da3b4;
 }
 
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--stella-typography-fontFamily-sans, Arial, Helvetica, sans-serif);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Nav links ───────────────────────────────────────────────── */
+.nav-link {
+    color: var(--stella-color-starlight-secondary, #9da3b4);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.375rem;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+.nav-link:hover {
+    color: var(--stella-color-starlight-primary, #e8eaf6);
+    background-color: var(--stella-color-void-overlay, #252b36);
+}
+
+/* ── Media placeholder ───────────────────────────────────────── */
+.aspect-video-placeholder {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--stella-color-void-overlay, #252b36);
+    border-radius: 0.5rem;
+    color: var(--stella-color-starlight-secondary, #9da3b4);
+    font-size: 0.875rem;
 }

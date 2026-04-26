@@ -12,6 +12,7 @@ const customJestConfig = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^@stella-ds/react$': '<rootDir>/test/mocks/stella-ds-react.js',
   },
   collectCoverageFrom: [
     'src/app/components/**/*.{js,jsx,ts,tsx}',

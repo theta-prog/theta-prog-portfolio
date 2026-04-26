@@ -1,24 +1,21 @@
-'use client';
 import Header from './components/Header/index';
 import HeroSection from './components/HeroSection';
 import NewsSection from './components/NewsSection';
 import AboutSection from './components/AboutSection';
 import WorksSection from './components/WorksSection';
+import SiteFooter from './components/SiteFooter';
 
-// Main Component
 const Page = () => {
     return (
-        <div
-            className="w-full min-h-screen bg-background text-foreground transition-colors duration-200 flex flex-col"
-            data-oid=":4b6_4u"
-        >
-            <Header data-oid="cxbhji8" />
-            <main className="flex-1 max-w-7xl mx-auto px-8 py-12 space-y-16" data-oid="9luk_7-">
-                <HeroSection data-oid="g5tdyha" />
+        <div className="w-full min-h-screen flex flex-col" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
+            <Header />
+            <main className="flex-1 max-w-4xl mx-auto w-full px-8 py-12" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+                <HeroSection />
                 <NewsSection />
-                <AboutSection data-oid="8w-w4pj" />
-                <WorksSection data-oid="d2zsnco" />
+                <AboutSection />
+                <WorksSection />
             </main>
+            <SiteFooter />
         </div>
     );
 };
