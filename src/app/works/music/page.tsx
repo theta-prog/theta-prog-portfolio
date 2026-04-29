@@ -1,58 +1,73 @@
 'use client';
+
 import Header from '../../components/Header/index';
+import SiteFooter from '../../components/SiteFooter';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { translations } from './translations';
+import {
+    Card,
+    CardContent,
+    Badge,
+    Heading,
+    Text,
+    Button,
+} from '@stella-ds/react';
 
 export default function Page() {
     const { language } = useLanguage();
     const t = translations[language];
 
     return (
-        <div className="w-full min-h-screen bg-background text-foreground transition-colors duration-200">
+        <div className="w-full min-h-screen flex flex-col" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
             <Header />
-            <main className="max-w-7xl mx-auto px-8 py-12">
-                <div className="space-y-12">
-                    {/* Hero Section */}
-                    <section className="text-center space-y-6">
-                        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white">
+            <main className="flex-1 max-w-4xl mx-auto w-full px-8 py-12">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+
+                    <section style={{ textAlign: 'center' }}>
+                        <Heading level={1} size="3xl" style={{ marginBottom: '0.75rem' }}>
                             {t.title}
-                        </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                        </Heading>
+                        <Text size="lg" color="secondary">
                             {t.subtitle}
-                        </p>
+                        </Text>
                     </section>
 
-                    {/* Song List */}
-                    <section className="space-y-6">
+                    <section style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                         {t.songs.map((song, index) => (
-                            <div key={index} className="bg-white dark:bg-[#2a2f3a] rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-6 items-center transition-transform hover:scale-[1.01]">
-                                {/* Placeholder for artwork or player */}
-                                <div className="w-full md:w-64 aspect-video bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500 dark:text-gray-400 relative overflow-hidden group">
-                                    <button
-                                        type="button"
-                                        className="group-hover:scale-110 transition-transform duration-300 bg-transparent border-0 text-gray-500 dark:text-gray-400"
-                                        aria-label={`Play ${song.title}`}
-                                    >
-                                        ▶ {t.play}
-                                    </button>
-                                </div>
-                                <div className="flex-1 space-y-3 text-center md:text-left">
-                                    <div>
-                                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{song.title}</h3>
-                                        <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">{t.vocal} {song.vocalist}</p>
+                            <Card key={index} hoverable>
+                                <CardContent style={{ padding: '1.5rem' }}>
+                                    <div className="flex flex-col md:flex-row gap-6 items-center">
+                                        <div className="aspect-video-placeholder w-full md:w-64 flex-shrink-0"
+                                            style={{ minHeight: '8rem' }}>
+                                            <Button variant="ghost" size="md" aria-label={`Play ${song.title}`}>
+                                                ▶ {t.play}
+                                            </Button>
+                                        </div>
+                                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}
+                                            className="text-center md:text-left">
+                                            <div>
+                                                <Heading level={3} size="lg" style={{ marginBottom: '0.25rem' }}>
+                                                    {song.title}
+                                                </Heading>
+                                                <Text color="secondary" size="sm">
+                                                    Vo. {song.vocalist}
+                                                </Text>
+                                            </div>
+                                            <Text color="primary">{song.description}</Text>
+                                            <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}
+                                                className="md:justify-start">
+                                                <Badge variant="subtle" color="primary">{song.genre}</Badge>
+                                                <Badge variant="outline">{song.year}</Badge>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p className="text-gray-600 dark:text-gray-300">{song.description}</p>
-                                    <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400">
-                                        <span>{song.year}</span>
-                                        <span>•</span>
-                                        <span>{song.genre}</span>
-                                    </div>
-                                </div>
-                            </div>
+                                </CardContent>
+                            </Card>
                         ))}
                     </section>
                 </div>
             </main>
+            <SiteFooter />
         </div>
     );
 }
