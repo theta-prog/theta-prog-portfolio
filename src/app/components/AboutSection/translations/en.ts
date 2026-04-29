@@ -4,7 +4,7 @@ export const en = {
     profile: 'Profile',
     background: 'Background',
     backgroundText:
-        `Music producer specializing in Vocaloid and DTM. My sound spans rock, EDM, and electronic music — and I love crafting tracks that blend those worlds together.
+        `Frontend engineer focused on UI component systems and web applications — currently building EC sites and React-based products.
 
-Alongside music, I work as a frontend engineer building EC sites and web applications. I also have a passion for digital art and generative visuals. Based in Kawasaki, originally from Chiba.`,
+On the side, I produce Vocaloid music spanning rock, EDM, and electronic sounds. I also enjoy digital art and generative visuals. Based in Kawasaki, originally from Chiba.`,
 };

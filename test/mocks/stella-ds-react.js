@@ -101,6 +101,19 @@ const Stack = createPrimitive('div', ['direction', 'gap', 'align', 'justify', 'w
 const Badge = createPrimitive('span');
 const Separator = createPrimitive('div');
 const FooterDivider = createPrimitive('hr');
+const Carousel = createPrimitive('div', ['loop', 'slideAlign', 'slidesPerView', 'setApi', 'autoplay', 'autoplayInterval', 'pauseOnHover']);
+const CarouselContent = createPrimitive('div');
+const CarouselItem = createPrimitive('div', ['slideLabel']);
+const CarouselDots = createPrimitive('div');
+const CarouselPrevious = React.forwardRef(({ children, ...props }, ref) => {
+  return React.createElement('button', { ref, type: 'button', ...props }, children);
+});
+CarouselPrevious.displayName = 'MockCarouselPrevious';
+
+const CarouselNext = React.forwardRef(({ children, ...props }, ref) => {
+  return React.createElement('button', { ref, type: 'button', ...props }, children);
+});
+CarouselNext.displayName = 'MockCarouselNext';
 
 module.exports = {
   Avatar,
@@ -113,6 +126,12 @@ module.exports = {
   CardFooter,
   CardHeader,
   CardTitle,
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
   Footer,
   FooterBottom,
   FooterContent,

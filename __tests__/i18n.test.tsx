@@ -150,7 +150,7 @@ describe('WorksSection Component Tests', () => {
   test('WorksSection renders in Japanese (default)', () => {
     renderWithLanguageProvider(<WorksSection />);
     expect(screen.getByText('作品集')).toBeInTheDocument();
-    expect(screen.getAllByText('Music').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Creative Works').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Coding').length).toBeGreaterThan(0);
   });
 

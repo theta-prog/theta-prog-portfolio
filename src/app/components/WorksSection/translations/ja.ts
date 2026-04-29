@@ -1,7 +1,7 @@
 export const ja = {
     title: '作品集',
-    music: 'Music',
     coding: 'Coding',
+    creativeWorks: 'Creative Works',
     viewAll: 'すべて見る →',
     musicPreviews: [
         {

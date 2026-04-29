@@ -6,7 +6,7 @@ import { FaSun, FaMoon, FaLanguage } from 'react-icons/fa';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { headerTranslations } from './translations';
-import { snsLinks } from '../../constants/socialLinks';
+import { devLinks } from '../../constants/socialLinks';
 import {
     Header as StellaHeader,
     HeaderBrand,
@@ -40,19 +40,19 @@ const Header = () => {
     const navLinks = (
         <>
             <Link href="/about" className="nav-link">{t.about}</Link>
-            <Link href="/works/music" className="nav-link">{t.music}</Link>
             <Link href="/works/coding" className="nav-link">{t.coding}</Link>
+            <Link href="/works/music" className="nav-link">{t.music}</Link>
         </>
     );
 
     const mobileMenu = (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
             <Link href="/about" className="nav-link" style={{ display: 'block' }}>{t.about}</Link>
-            <Link href="/works/music" className="nav-link" style={{ display: 'block' }}>{t.music}</Link>
             <Link href="/works/coding" className="nav-link" style={{ display: 'block' }}>{t.coding}</Link>
+            <Link href="/works/music" className="nav-link" style={{ display: 'block' }}>{t.music}</Link>
             <Separator style={{ margin: '0.5rem 0' }} />
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {snsLinks.map((sns) => (
+                {devLinks.map((sns) => (
                     <Button key={sns.name} variant="ghost" size="sm" asChild>
                         <a href={sns.url} target="_blank" rel="noopener noreferrer">
                             <sns.icon style={{ fontSize: '1rem', marginRight: '0.25rem' }} />
@@ -129,7 +129,7 @@ const Header = () => {
                                 boxShadow: linksPanelShadow,
                                 backdropFilter: 'blur(18px)',
                             }}>
-                                {snsLinks.map((sns) => (
+                                {devLinks.map((sns) => (
                                     <a
                                         key={sns.name}
                                         href={sns.url}

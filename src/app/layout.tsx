@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import '@stella-ds/theme/css';
@@ -9,8 +9,19 @@ import { ThemeProvider } from './contexts/ThemeContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'theta library',
-    description: 'Portfolio of theta — Vocaloid music producer & frontend engineer',
+    title: 'theta | Frontend Engineer',
+    description: 'Frontend engineer building UI component systems and web applications. Based in Kawasaki, Japan.',
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'),
+    openGraph: {
+        title: 'theta | Frontend Engineer',
+        description: 'Frontend engineer building UI component systems and web applications.',
+        type: 'website',
+    },
+};
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

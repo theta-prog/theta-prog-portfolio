@@ -8,10 +8,15 @@ export interface SocialLink {
     icon: IconType;
 }
 
-export const snsLinks: SocialLink[] = [
+export const devLinks: SocialLink[] = [
+    { name: 'GitHub', url: 'https://github.com/theta-prog', icon: FaGithub },
+];
+
+export const musicLinks: SocialLink[] = [
     { name: 'YouTube', url: 'https://youtube.com', icon: FaYoutube },
     { name: 'Niconico', url: 'https://www.nicovideo.jp', icon: SiNiconico },
     { name: 'TikTok', url: 'https://www.tiktok.com', icon: FaTiktok },
     { name: 'Piapro', url: 'https://piapro.jp', icon: FaMusic },
-    { name: 'GitHub', url: 'https://github.com', icon: FaGithub },
 ];
+
+export const snsLinks: SocialLink[] = [...devLinks, ...musicLinks];

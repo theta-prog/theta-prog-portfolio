@@ -1,7 +1,7 @@
 export const en = {
     title: 'My Works',
-    music: 'Music',
     coding: 'Coding',
+    creativeWorks: 'Creative Works',
     viewAll: 'View All →',
     musicPreviews: [
         {

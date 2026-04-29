@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
-import { snsLinks } from '../constants/socialLinks';
+import { devLinks } from '../constants/socialLinks';
 import {
     Footer,
     FooterContent,
@@ -15,25 +15,25 @@ import {
 const navLinks = {
     en: [
         { label: 'About', href: '/about' },
-        { label: 'Music', href: '/works/music' },
         { label: 'Coding', href: '/works/coding' },
+        { label: 'Creative Works', href: '/works/music' },
     ],
     ja: [
         { label: 'About', href: '/about' },
-        { label: 'Music', href: '/works/music' },
         { label: 'Coding', href: '/works/coding' },
+        { label: 'Creative Works', href: '/works/music' },
     ],
 };
 
 const copy = {
     en: {
-        desc: 'Music producer & frontend engineer.',
+        desc: 'Frontend engineer building UI systems and web applications.',
         nav: 'Navigation',
         links: 'Links',
         copyright: `© ${new Date().getFullYear()} theta. All rights reserved.`,
     },
     ja: {
-        desc: 'ボカロP・フロントエンドエンジニア',
+        desc: 'フロントエンドエンジニア。UIシステムとWebアプリケーションを作っています。',
         nav: 'ナビゲーション',
         links: 'リンク',
         copyright: `© ${new Date().getFullYear()} theta. All rights reserved.`,
@@ -75,7 +75,7 @@ const SiteFooter = () => {
                         {t.links}
                     </Text>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                        {snsLinks.map((sns) => (
+                        {devLinks.map((sns) => (
                             <Button key={sns.name} variant="ghost" size="sm" asChild
                                 style={{ justifyContent: 'flex-start', paddingLeft: '0.25rem' }}>
                                 <a href={sns.url} target="_blank" rel="noopener noreferrer"
