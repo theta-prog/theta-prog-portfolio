@@ -1,6 +1,7 @@
 export const en = {
     title: 'About Me',
     subtitle: "I'm theta",
+    roleTagline: 'Vocaloid Producer · Frontend Engineer',
     profile: 'Profile',
     background: 'Background',
     backgroundText:

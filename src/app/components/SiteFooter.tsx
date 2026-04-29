@@ -30,13 +30,11 @@ const copy = {
         desc: 'Frontend engineer building UI systems and web applications.',
         nav: 'Navigation',
         links: 'Links',
-        copyright: `© ${new Date().getFullYear()} theta. All rights reserved.`,
     },
     ja: {
         desc: 'フロントエンドエンジニア。UIシステムとWebアプリケーションを作っています。',
         nav: 'ナビゲーション',
         links: 'リンク',
-        copyright: `© ${new Date().getFullYear()} theta. All rights reserved.`,
     },
 };
 
@@ -44,6 +42,7 @@ const SiteFooter = () => {
     const { language } = useLanguage();
     const t = copy[language];
     const nav = navLinks[language];
+    const currentYear = new Date().getFullYear();
 
     return (
         <Footer>
@@ -92,7 +91,9 @@ const SiteFooter = () => {
             <FooterDivider />
 
             <FooterBottom>
-                <Text size="xs" color="secondary">{t.copyright}</Text>
+                <Text size="xs" color="secondary">
+                    © <span suppressHydrationWarning>{currentYear}</span> theta. All rights reserved.
+                </Text>
                 <Text size="xs" color="secondary" style={{ marginLeft: 'auto' }}>
                     Built with{' '}
                     <a href="https://github.com/theta-prog/stella-ds"

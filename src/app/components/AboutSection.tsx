@@ -43,7 +43,7 @@ const AboutSection = () => {
                                     {t.subtitle}
                                 </Heading>
                                 <Text color="secondary" size="sm">
-                                    Vocaloid Producer · Frontend Engineer
+                                    {t.roleTagline}
                                 </Text>
                             </div>
                             <Text color="primary" style={{ lineHeight: 1.75, whiteSpace: 'pre-wrap' }}>

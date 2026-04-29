@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <head>
                 {/* Prevent flash of wrong theme */}
                 <script dangerouslySetInnerHTML={{
-                    __html: `(function(){var t=localStorage.getItem('theta-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);})();`
+                    __html: `(function(){var t;try{t=localStorage.getItem('theta-theme');}catch(e){}if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}})();`
                 }} />
             </head>
             <body className={inter.className}>

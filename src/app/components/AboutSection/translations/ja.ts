@@ -1,6 +1,7 @@
 export const ja = {
   title: 'About Me',
   subtitle: "I'm theta",
+  roleTagline: 'ボカロP・フロントエンドエンジニア',
   profile: 'プロフィール',
   background: 'Introduction',
   backgroundText:

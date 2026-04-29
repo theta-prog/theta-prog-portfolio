@@ -8,6 +8,7 @@ import NewsSection from '../src/app/components/NewsSection';
 import HeroSection from '../src/app/components/HeroSection';
 import SiteFooter from '../src/app/components/SiteFooter';
 import WorksSection from '../src/app/components/WorksSection';
+import { Button } from '@stella-ds/react';
 
 const TestLanguageSwitch = () => {
   const { language, setLanguage } = useLanguage();
@@ -45,6 +46,12 @@ const renderWithLanguageProvider = (component: React.ReactNode) => {
     </ThemeProvider>
   );
 };
+
+afterEach(() => {
+  window.localStorage.clear();
+  document.documentElement.removeAttribute('data-theme');
+  jest.restoreAllMocks();
+});
 
 describe('Internationalization (i18n) Tests', () => {
   test('LanguageContext provides default language as "ja"', () => {
@@ -86,6 +93,7 @@ describe('Internationalization (i18n) Tests', () => {
     renderWithLanguageProvider(<AboutSection />);
     expect(screen.getByText('About Me')).toBeInTheDocument();
     expect(screen.getByText("I'm theta")).toBeInTheDocument();
+    expect(screen.getByText('ボカロP・フロントエンドエンジニア')).toBeInTheDocument();
     expect(screen.getByText(/UIコンポーネントシステムの構築やWebアプリケーション開発に携わっている/)).toBeInTheDocument();
   });
 
@@ -99,11 +107,47 @@ describe('Internationalization (i18n) Tests', () => {
     fireEvent.click(screen.getByTestId('switch-to-en'));
     expect(screen.getByText('About Me')).toBeInTheDocument();
     expect(screen.getByText("I'm theta")).toBeInTheDocument();
+    expect(screen.getByText('Vocaloid Producer · Frontend Engineer')).toBeInTheDocument();
     expect(screen.queryByText(/UIコンポーネントシステムの構築やWebアプリケーション開発に携わっている/)).not.toBeInTheDocument();
   });
 });
 
+describe('Stella Mock Regression Tests', () => {
+  test('Button asChild keeps component props on the rendered child', () => {
+    render(
+      <Button
+        asChild
+        aria-label="Open external profile"
+        className="from-button"
+        style={{ justifyContent: 'flex-start' }}
+      >
+        <a href="https://example.com" className="from-child" style={{ display: 'flex' }}>
+          GitHub
+        </a>
+      </Button>
+    );
+
+    const link = screen.getByRole('link', { name: 'Open external profile' });
+    expect(link).toHaveClass('from-child');
+    expect(link).toHaveClass('from-button');
+    expect(link).toHaveStyle({ display: 'flex', justifyContent: 'flex-start' });
+  });
+});
+
 describe('ThemeContext Tests', () => {
+  test('ThemeProvider uses the DOM theme on first render', () => {
+    document.documentElement.setAttribute('data-theme', 'light');
+    window.localStorage.setItem('theta-theme', 'dark');
+
+    render(
+      <ThemeProvider>
+        <TestThemeSwitch />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
+  });
+
   test('ThemeContext throws error when used outside provider', () => {
     const TestComponent = () => {
       try {
@@ -139,6 +183,36 @@ describe('ThemeContext Tests', () => {
     });
     expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
     expect(window.localStorage.getItem('theta-theme')).toBe('dark');
+  });
+
+  test('ThemeProvider handles storage access errors without breaking theme updates', async () => {
+    const getItemSpy = jest.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+      throw new Error('storage blocked');
+    });
+    const setItemSpy = jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('storage blocked');
+    });
+
+    expect(() => {
+      render(
+        <ThemeProvider>
+          <TestThemeSwitch />
+        </ThemeProvider>
+      );
+    }).not.toThrow();
+
+    await waitFor(() => {
+      expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
+    });
+
+    fireEvent.click(screen.getByTestId('toggle-theme'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
+    });
+    expect(document.documentElement).toHaveAttribute('data-theme', 'light');
+    expect(getItemSpy).toHaveBeenCalled();
+    expect(setItemSpy).toHaveBeenCalled();
   });
 });
 

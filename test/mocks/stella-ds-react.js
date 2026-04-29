@@ -8,10 +8,17 @@ const withAsChild = (children, props) => {
 
   const rest = { ...props };
   delete rest.asChild;
+  const className = [children.props.className, rest.className].filter(Boolean).join(' ');
+  const style = {
+    ...children.props.style,
+    ...rest.style,
+  };
 
   return React.cloneElement(children, {
-    ...rest,
     ...children.props,
+    ...rest,
+    ...(className ? { className } : {}),
+    ...(Object.keys(style).length > 0 ? { style } : {}),
   });
 };
 
