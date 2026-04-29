@@ -1,11 +1,12 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { LanguageProvider, useLanguage } from '../src/app/contexts/LanguageContext';
-import { ThemeProvider } from '../src/app/contexts/ThemeContext';
+import { ThemeProvider, useTheme } from '../src/app/contexts/ThemeContext';
 import AboutSection from '../src/app/components/AboutSection';
 import Header from '../src/app/components/Header/index';
 import NewsSection from '../src/app/components/NewsSection';
 import HeroSection from '../src/app/components/HeroSection';
+import SiteFooter from '../src/app/components/SiteFooter';
 import WorksSection from '../src/app/components/WorksSection';
 
 const TestLanguageSwitch = () => {
@@ -18,6 +19,18 @@ const TestLanguageSwitch = () => {
       </button>
       <button data-testid="switch-to-en" onClick={() => setLanguage('en')}>
         Switch to English
+      </button>
+    </div>
+  );
+};
+
+const TestThemeSwitch = () => {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <div>
+      <span data-testid="current-theme">{theme}</span>
+      <button data-testid="toggle-theme" onClick={toggleTheme}>
+        Toggle theme
       </button>
     </div>
   );
@@ -73,7 +86,7 @@ describe('Internationalization (i18n) Tests', () => {
     renderWithLanguageProvider(<AboutSection />);
     expect(screen.getByText('About Me')).toBeInTheDocument();
     expect(screen.getByText("I'm theta")).toBeInTheDocument();
-    expect(screen.getByText(/ボカロ、DTMを中心に音楽制作活動を行う/)).toBeInTheDocument();
+    expect(screen.getByText(/UIコンポーネントシステムの構築やWebアプリケーション開発に携わっている/)).toBeInTheDocument();
   });
 
   test('AboutSection switches to English', () => {
@@ -86,7 +99,46 @@ describe('Internationalization (i18n) Tests', () => {
     fireEvent.click(screen.getByTestId('switch-to-en'));
     expect(screen.getByText('About Me')).toBeInTheDocument();
     expect(screen.getByText("I'm theta")).toBeInTheDocument();
-    expect(screen.queryByText(/ボカロ、DTMを中心に音楽制作活動を行う/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/UIコンポーネントシステムの構築やWebアプリケーション開発に携わっている/)).not.toBeInTheDocument();
+  });
+});
+
+describe('ThemeContext Tests', () => {
+  test('ThemeContext throws error when used outside provider', () => {
+    const TestComponent = () => {
+      try {
+        useTheme();
+        return <div>Should not render</div>;
+      } catch (error) {
+        return <div data-testid="theme-error-message">{(error as Error).message}</div>;
+      }
+    };
+
+    render(<TestComponent />);
+    expect(screen.getByTestId('theme-error-message')).toHaveTextContent('useTheme must be used within a ThemeProvider');
+  });
+
+  test('ThemeProvider restores saved theme and toggles it', async () => {
+    window.localStorage.setItem('theta-theme', 'light');
+
+    render(
+      <ThemeProvider>
+        <TestThemeSwitch />
+      </ThemeProvider>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('current-theme')).toHaveTextContent('light');
+    });
+    expect(document.documentElement).toHaveAttribute('data-theme', 'light');
+
+    fireEvent.click(screen.getByTestId('toggle-theme'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('current-theme')).toHaveTextContent('dark');
+    });
+    expect(document.documentElement).toHaveAttribute('data-theme', 'dark');
+    expect(window.localStorage.getItem('theta-theme')).toBe('dark');
   });
 });
 
@@ -95,15 +147,19 @@ describe('Header Component Tests', () => {
     renderWithLanguageProvider(<Header />);
 
     // Initially SNS dropdown should not be visible
-    expect(screen.queryByText('YouTube')).not.toBeInTheDocument();
+    expect(screen.queryByText('GitHub')).not.toBeInTheDocument();
 
     // Click the Links button to open
     const linksButton = screen.getByRole('button', { name: 'SNS Links' });
     fireEvent.click(linksButton);
 
     // SNS links should appear
-    expect(screen.getByText('YouTube')).toBeInTheDocument();
-    expect(screen.getByText('GitHub')).toBeInTheDocument();
+    const githubLink = screen.getByRole('link', { name: 'GitHub' });
+    expect(githubLink).toBeInTheDocument();
+    expect(screen.queryByText('YouTube')).not.toBeInTheDocument();
+
+    fireEvent.click(githubLink);
+    expect(screen.queryByRole('link', { name: 'GitHub' })).not.toBeInTheDocument();
   });
 
   test('Language toggle switches language', () => {
@@ -122,6 +178,16 @@ describe('Header Component Tests', () => {
     const jaButton = screen.getByRole('button', { name: 'Switch language to 日本語' });
     fireEvent.click(jaButton);
     expect(screen.getByTestId('current-language')).toHaveTextContent('ja');
+  });
+
+  test('Theme toggle updates the document theme', async () => {
+    renderWithLanguageProvider(<Header />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Toggle theme' }));
+
+    await waitFor(() => {
+      expect(document.documentElement).toHaveAttribute('data-theme', 'light');
+    });
   });
 });
 
@@ -143,6 +209,32 @@ describe('HeroSection Component Tests', () => {
   test('HeroSection renders subtitle', () => {
     renderWithLanguageProvider(<HeroSection />);
     expect(screen.getByText(/Music.*Code/)).toBeInTheDocument();
+  });
+});
+
+describe('SiteFooter Component Tests', () => {
+  test('SiteFooter renders Japanese copy and developer links', () => {
+    renderWithLanguageProvider(<SiteFooter />);
+
+    expect(screen.getByText('フロントエンドエンジニア。UIシステムとWebアプリケーションを作っています。')).toBeInTheDocument();
+    expect(screen.getByText('ナビゲーション')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Creative Works' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'GitHub' })).toBeInTheDocument();
+  });
+
+  test('SiteFooter switches to English', () => {
+    renderWithLanguageProvider(
+      <div>
+        <SiteFooter />
+        <TestLanguageSwitch />
+      </div>
+    );
+
+    fireEvent.click(screen.getByTestId('switch-to-en'));
+
+    expect(screen.getByText('Frontend engineer building UI systems and web applications.')).toBeInTheDocument();
+    expect(screen.getByText('Navigation')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Creative Works' })).toBeInTheDocument();
   });
 });
 
