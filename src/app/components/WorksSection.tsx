@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, type CSSProperties } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './WorksSection/translations';
@@ -37,6 +38,9 @@ const carouselStyle: CSSProperties & { '--carousel-edge-padding'?: string } = {
 };
 
 const desktopMediaQuery = '(min-width: 768px)';
+const githubBaseUrl = 'https://github.com/theta-prog';
+
+const getYouTubeThumbnailUrl = (youtubeId: string) => `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
 
 const WorksSection = () => {
     const { language } = useLanguage();
@@ -44,6 +48,7 @@ const WorksSection = () => {
     const [slidesPerView, setSlidesPerView] = useState(1);
     const previousSlideLabel = language === 'ja' ? '前のスライド' : 'Previous slide';
     const nextSlideLabel = language === 'ja' ? '次のスライド' : 'Next slide';
+    const siteLabel = language === 'ja' ? 'サイト' : 'Live';
 
     useEffect(() => {
         const mediaQuery = window.matchMedia(desktopMediaQuery);
@@ -80,18 +85,46 @@ const WorksSection = () => {
                     <CarouselContent className="gap-5 items-stretch">
                     {t.codingPreviews.map((project) => (
                         <CarouselItem key={project.title} style={{ minWidth: 0 }}>
-                            <Card hoverable style={{ height: '100%' }}>
-                                <div className="aspect-video-placeholder" style={{ borderRadius: '0.5rem 0.5rem 0 0' }}>
-                                    {`{ }`} {project.title}
-                                </div>
-                                <CardHeader>
+                            <Card hoverable style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                {'image' in project && project.image ? (
+                                    <div className="work-thumbnail work-thumbnail--card-top">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.imageAlt}
+                                            fill
+                                            sizes="(max-width: 768px) 90vw, 40vw"
+                                            className="work-thumbnail__image work-thumbnail__image--contain"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="aspect-video-placeholder" style={{ borderRadius: '0.5rem 0.5rem 0 0' }}>
+                                        {`{ }`} {project.title}
+                                    </div>
+                                )}
+                                <CardHeader style={{ flex: 1 }}>
                                     <CardTitle>{project.title}</CardTitle>
                                     <CardDescription>{project.description}</CardDescription>
                                 </CardHeader>
-                                <CardFooter style={{ gap: '0.5rem', flexWrap: 'wrap' }}>
-                                    {project.tech.split(', ').map((tech) => (
-                                        <Badge key={tech} variant="subtle" color="default" size="sm">{tech}</Badge>
-                                    ))}
+                                <CardFooter style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.75rem', marginTop: 'auto' }}>
+                                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        {project.tech.split(', ').map((tech) => (
+                                            <Badge key={tech} variant="subtle" color="default" size="sm">{tech}</Badge>
+                                        ))}
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        <Button variant="outline" size="sm" asChild>
+                                            <a href={`${githubBaseUrl}/${project.title}`} target="_blank" rel="noopener noreferrer">
+                                                GitHub
+                                            </a>
+                                        </Button>
+                                        {project.demoUrl && (
+                                            <Button variant="ghost" size="sm" asChild>
+                                                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                                                    {siteLabel}
+                                                </a>
+                                            </Button>
+                                        )}
+                                    </div>
                                 </CardFooter>
                             </Card>
                         </CarouselItem>
@@ -124,17 +157,39 @@ const WorksSection = () => {
                     <CarouselContent className="gap-5 items-stretch">
                     {t.musicPreviews.map((song) => (
                         <CarouselItem key={song.title} style={{ minWidth: 0 }}>
-                            <Card hoverable style={{ height: '100%' }}>
-                                <div className="aspect-video-placeholder" style={{ borderRadius: '0.5rem 0.5rem 0 0' }}>
-                                    ♪ {song.title}
+                            <Card hoverable style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                <div className="work-thumbnail work-thumbnail--card-top">
+                                    <Image
+                                        src={getYouTubeThumbnailUrl(song.youtubeId)}
+                                        alt={`${song.title} ${language === 'ja' ? 'のYouTubeサムネイル' : 'YouTube thumbnail'}`}
+                                        fill
+                                        sizes="(max-width: 768px) 90vw, 40vw"
+                                        className="work-thumbnail__image work-thumbnail__image--cover"
+                                    />
                                 </div>
-                                <CardHeader>
+                                <CardHeader style={{ flex: 1 }}>
                                     <CardTitle>{song.title}</CardTitle>
                                     <CardDescription>Vo. {song.vocalist}</CardDescription>
                                 </CardHeader>
-                                <CardFooter style={{ gap: '0.5rem' }}>
-                                    <Badge variant="subtle" color="primary" size="sm">{song.genre}</Badge>
-                                    <Badge variant="outline" size="sm">{song.year}</Badge>
+                                <CardFooter style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.75rem', marginTop: 'auto' }}>
+                                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        <Badge variant="subtle" color="primary" size="sm">{song.genre}</Badge>
+                                        <Badge variant="outline" size="sm">{song.year}</Badge>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                                        <Button variant="ghost" size="sm" asChild>
+                                            <a href={song.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                                                {t.watchOnYoutube}
+                                            </a>
+                                        </Button>
+                                        {song.niconicoUrl && (
+                                            <Button variant="ghost" size="sm" asChild>
+                                                <a href={song.niconicoUrl} target="_blank" rel="noopener noreferrer">
+                                                    {t.watchOnNiconico}
+                                                </a>
+                                            </Button>
+                                        )}
+                                    </div>
                                 </CardFooter>
                             </Card>
                         </CarouselItem>

@@ -14,21 +14,19 @@ const NewsSection = () => {
                 {t.title}
             </Heading>
             <Card>
-                <CardContent style={{ padding: '1.25rem 1.5rem' }}>
+                <CardContent className="news-list" style={{ padding: '1.25rem 1.5rem' }}>
                     {t.newsItems.map((item, index) => (
                         <div key={index}>
                             {index > 0 && <Separator style={{ margin: '0.875rem 0' }} />}
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}
-                                className="md:flex-row md:items-center md:gap-6">
+                            <div className="news-item">
                                 <Text
                                     size="sm"
                                     family="mono"
                                     color="secondary"
-                                    style={{ minWidth: '7rem', flexShrink: 0 }}
                                 >
                                     {item.date}
                                 </Text>
-                                <Text size="sm">{item.content}</Text>
+                                <Text size="sm" style={{ lineHeight: 1.6 }}>{item.content}</Text>
                             </div>
                         </div>
                     ))}

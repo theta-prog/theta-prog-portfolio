@@ -34,6 +34,7 @@ type HeroSlide = {
         variant: 'image';
         image: string;
         alt: string;
+        imageFit?: 'contain' | 'cover';
     }
 );
 
@@ -50,28 +51,30 @@ const heroSlides: HeroSlide[] = [
         ctaLabel: 'Read profile ->',
     },
     {
-        id: 'chat',
+        id: 'coding-pick',
         variant: 'image',
-        eyebrow: 'Workflow',
-        title: 'Prompt to Product',
-        description: '仕様の意図がそのままUIに着地するまで詰める。',
-        image: '/images/chat.jpg',
-        alt: 'Dark editor chat interface floating over a rainy glass background.',
+        eyebrow: 'Featured Coding',
+        title: 'stella-ds',
+        description: 'トークン、Reactコンポーネント、Storybookを備えたUI基盤。',
+        image: '/images/stella-ui-home.png',
+        alt: 'Stella UI homepage',
+        imageFit: 'contain',
         href: '/works/coding',
         linkLabel: 'Open coding works',
         ctaLabel: 'See coding works ->',
     },
     {
-        id: 'inspect',
+        id: 'music-pick',
         variant: 'image',
-        eyebrow: 'Interface Review',
-        title: 'Inspect the Surface',
-        description: '挙動、余白、視線誘導までコードで詰める。',
-        image: '/images/right-click.jpg',
-        alt: 'Context menu opened over a design inspection view.',
-        href: '/works/coding',
-        linkLabel: 'Open interface work samples',
-        ctaLabel: 'Inspect projects ->',
+        eyebrow: 'Featured Music',
+        title: 'Someday',
+        description: '感謝を軽やかなメロディで届ける初音ミクのポップナンバー。',
+        image: 'https://i.ytimg.com/vi/TOkltMR3j0s/hqdefault.jpg',
+        alt: 'Someday YouTube thumbnail',
+        imageFit: 'cover',
+        href: '/works/music',
+        linkLabel: 'Open music works',
+        ctaLabel: 'Listen to music ->',
     },
 ];
 
@@ -140,9 +143,9 @@ const HeroSection = () => {
                                                 src={slide.image}
                                                 alt={slide.alt}
                                                 fill
-                                                priority={slide.id === 'chat'}
+                                                priority={slide.id === 'coding-pick'}
                                                 sizes="(max-width: 768px) 100vw, 80vw"
-                                                className={styles.mediaImage}
+                                                className={`${styles.mediaImage} ${slide.imageFit === 'contain' ? styles.mediaImageContain : ''}`}
                                             />
                                             <div className={styles.mediaOverlay} />
                                             <div className={styles.captionCard}>

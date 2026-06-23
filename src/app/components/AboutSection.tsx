@@ -1,12 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations } from './AboutSection/translations';
 import { snsLinks } from '../constants/socialLinks';
 import {
     Card,
     CardContent,
-    Avatar,
     Heading,
     Text,
     Button,
@@ -24,19 +24,17 @@ const AboutSection = () => {
             </Heading>
             <Card>
                 <CardContent style={{ padding: '1.5rem 2rem' }}>
-                    <Stack direction="horizontal" gap="8" align="start" className="flex-col md:flex-row">
-                        <Avatar
-                            alt="theta"
-                            size="xl"
-                            style={{
-                                width: '7rem',
-                                height: '7rem',
-                                flexShrink: 0,
-                                fontSize: '2.5rem',
-                                alignSelf: 'center',
-                            }}
-                            className="md:self-start md:w-40 md:h-40"
-                        />
+                    <div className="about-layout">
+                        <div className="about-logo">
+                            <Image
+                                src="/images/theta-logo.jpg"
+                                alt="theta logo"
+                                fill
+                                sizes="(max-width: 768px) 7rem, 10rem"
+                                className="about-logo__image"
+                                priority
+                            />
+                        </div>
                         <Stack direction="vertical" gap="4" style={{ flex: 1, minWidth: 0 }}>
                             <div>
                                 <Heading level={3} size="xl" style={{ marginBottom: '0.25rem' }}>
@@ -61,7 +59,7 @@ const AboutSection = () => {
                                 ))}
                             </Stack>
                         </Stack>
-                    </Stack>
+                    </div>
                 </CardContent>
             </Card>
         </section>

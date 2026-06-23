@@ -93,7 +93,6 @@ describe('Internationalization (i18n) Tests', () => {
     renderWithLanguageProvider(<AboutSection />);
     expect(screen.getByText('About Me')).toBeInTheDocument();
     expect(screen.getByText("I'm theta")).toBeInTheDocument();
-    expect(screen.getByText('ボカロP・フロントエンドエンジニア')).toBeInTheDocument();
     expect(screen.getByText(/UIコンポーネントシステムの構築やWebアプリケーション開発に携わっている/)).toBeInTheDocument();
   });
 
@@ -229,8 +228,9 @@ describe('Header Component Tests', () => {
 
     // SNS links should appear
     const githubLink = screen.getByRole('link', { name: 'GitHub' });
+    const youtubeLink = screen.getByRole('link', { name: 'YouTube' });
     expect(githubLink).toBeInTheDocument();
-    expect(screen.queryByText('YouTube')).not.toBeInTheDocument();
+    expect(youtubeLink).toBeInTheDocument();
 
     fireEvent.click(githubLink);
     expect(screen.queryByRole('link', { name: 'GitHub' })).not.toBeInTheDocument();
@@ -269,8 +269,9 @@ describe('NewsSection Component Tests', () => {
   test('NewsSection renders correctly', () => {
     renderWithLanguageProvider(<NewsSection />);
     expect(screen.getByText('News')).toBeInTheDocument();
-    expect(screen.getByText('2026.04.26')).toBeInTheDocument();
-    expect(screen.getByText('2024.05.20')).toBeInTheDocument();
+    expect(screen.getAllByText('2026.05')).toHaveLength(2);
+    expect(screen.getByText(/stella-ui v0.8.0/)).toBeInTheDocument();
+    expect(screen.queryByText('ポートフォリオ公開')).not.toBeInTheDocument();
   });
 });
 
@@ -322,8 +323,8 @@ describe('WorksSection Component Tests', () => {
 
   test('WorksSection shows music and coding previews', () => {
     renderWithLanguageProvider(<WorksSection />);
-    expect(screen.getByText('Spectrum')).toBeInTheDocument();
-    expect(screen.getByText('stella-ui')).toBeInTheDocument();
+    expect(screen.getByText('Someday')).toBeInTheDocument();
+    expect(screen.getByText('stella-ds')).toBeInTheDocument();
   });
 });
 

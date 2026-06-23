@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../../components/Header/index';
 import SiteFooter from '../../components/SiteFooter';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -10,11 +12,15 @@ import {
     Badge,
     Heading,
     Text,
+    Button,
 } from '@stella-ds/react';
+
+const githubBaseUrl = 'https://github.com/theta-prog';
 
 export default function Page() {
     const { language } = useLanguage();
     const t = translations[language];
+    const siteLabel = language === 'ja' ? 'サイト' : 'Live';
 
     return (
         <div className="w-full min-h-screen flex flex-col" style={{ background: 'var(--background)', color: 'var(--foreground)' }}>
@@ -52,10 +58,22 @@ export default function Page() {
                             <Card key={index} hoverable>
                                 <CardContent style={{ padding: '1.5rem' }}>
                                     <div className="flex flex-col md:flex-row gap-6 items-start">
-                                        <div className="aspect-video-placeholder w-full md:w-56 flex-shrink-0"
-                                            style={{ minHeight: '7rem', fontSize: '1.5rem' }}>
-                                            {`{ }`}
-                                        </div>
+                                        {'image' in project && project.image ? (
+                                            <div className="work-thumbnail work-thumbnail--list w-full md:w-56 flex-shrink-0">
+                                                <Image
+                                                    src={project.image}
+                                                    alt={project.imageAlt}
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 14rem"
+                                                    className="work-thumbnail__image work-thumbnail__image--contain"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div className="aspect-video-placeholder w-full md:w-56 flex-shrink-0"
+                                                style={{ minHeight: '7rem', fontSize: '1.5rem' }}>
+                                                {`{ }`}
+                                            </div>
+                                        )}
                                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                             <div>
                                                 <Heading level={3} size="md" style={{ marginBottom: '0.25rem' }}>
@@ -68,6 +86,20 @@ export default function Page() {
                                                 {project.tech.split(', ').map((t) => (
                                                     <Badge key={t} variant="subtle" color="default" size="sm">{t}</Badge>
                                                 ))}
+                                            </div>
+                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                                                <Button variant="outline" size="sm" asChild>
+                                                    <Link href={`${githubBaseUrl}/${project.title}`} target="_blank" rel="noopener noreferrer">
+                                                        GitHub
+                                                    </Link>
+                                                </Button>
+                                                {project.demoUrl && (
+                                                    <Button variant="ghost" size="sm" asChild>
+                                                        <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                                                            {siteLabel}
+                                                        </Link>
+                                                    </Button>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

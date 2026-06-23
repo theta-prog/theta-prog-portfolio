@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FaSun, FaMoon, FaLanguage } from 'react-icons/fa';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -83,7 +84,17 @@ const Header = () => {
     return (
         <StellaHeader sticky blur mobileNav={mobileMenu}>
             <HeaderBrand>
-                <Link href="/" style={{ textDecoration: 'none' }}>
+                <Link href="/" className="brand-link">
+                    <span className="brand-logo" aria-hidden="true">
+                        <Image
+                            src="/images/theta-logo.jpg"
+                            alt=""
+                            fill
+                            sizes="2rem"
+                            className="brand-logo__image"
+                            priority
+                        />
+                    </span>
                     <span style={{
                         fontSize: '1.5rem',
                         fontWeight: 700,

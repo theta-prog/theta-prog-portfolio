@@ -53,6 +53,83 @@ body {
     background-color: var(--stella-color-void-overlay, #252b36);
 }
 
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--stella-color-starlight-primary, #e8eaf6);
+    text-decoration: none;
+}
+
+.brand-logo {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border: 1px solid var(--border, #2b2e35);
+    border-radius: 0.375rem;
+    background: #1c2028;
+}
+
+.brand-logo__image {
+    object-fit: cover;
+}
+
+.about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .about-layout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.about-logo {
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border: 1px solid var(--border, #2b2e35);
+    border-radius: 0.75rem;
+    background: #1c2028;
+}
+
+.about-logo__image {
+    object-fit: cover;
+}
+
+.news-list {
+    text-align: left;
+}
+
+.news-item {
+    display: grid;
+    gap: 0.25rem;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .news-item {
+        grid-template-columns: 7.5rem minmax(0, 1fr);
+        gap: 1.5rem;
+        align-items: start;
+    }
+}
+
+@media (min-width: 768px) {
+    .about-logo {
+        width: 10rem;
+        height: 10rem;
+    }
+}
+
 /* ── Media placeholder ───────────────────────────────────────── */
 .aspect-video-placeholder {
     aspect-ratio: 16 / 9;
@@ -63,4 +140,33 @@ body {
     border-radius: 0.5rem;
     color: var(--stella-color-starlight-secondary, #9da3b4);
     font-size: 0.875rem;
+}
+
+.work-thumbnail {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--stella-color-void-overlay, #252b36);
+}
+
+.work-thumbnail--card-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.work-thumbnail--list {
+    min-height: 7rem;
+    border-radius: 0.5rem;
+}
+
+.work-thumbnail__image {
+    padding: 0.5rem;
+}
+
+.work-thumbnail__image--contain {
+    object-fit: contain;
+}
+
+.work-thumbnail__image--cover {
+    object-fit: cover;
+    padding: 0;
 }

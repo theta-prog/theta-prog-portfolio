@@ -86,6 +86,12 @@
     transition: transform 220ms ease;
 }
 
+.mediaImageContain {
+    object-fit: contain;
+    padding: 1rem;
+    background: var(--stella-color-void-overlay, #252b36);
+}
+
 .mediaOverlay {
     position: absolute;
     inset: 0;
