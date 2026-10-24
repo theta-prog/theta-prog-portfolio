@@ -16,6 +16,8 @@ import type { NextConfig } from 'next';
 // so Option A (static export) is the recommended first step.
 
 const nextConfig: NextConfig = {
+  // Keep the TypeScript 5 compiler API for build checks and config loading.
+  experimental: { useTypeScriptCli: false },
   output: 'standalone',
   images: {
     remotePatterns: [
