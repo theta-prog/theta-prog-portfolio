@@ -23,7 +23,7 @@ A modern, responsive portfolio website built with [Next.js](https://nextjs.org/)
 
 ### Prerequisites
 
-- Node.js 18.x or later
+- Node.js 22.23.4, 24.22.1, or 26.12.1 (or a compatible newer patched release)
 - npm, yarn, pnpm, or bun
 
 ### Installation
